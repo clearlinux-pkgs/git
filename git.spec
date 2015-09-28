@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.5.3
-Release  : 46
+Release  : 47
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.5.3.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.5.3.tar.gz
 Summary  : Core git tools
