@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.7.0
-Release  : 53
+Release  : 54
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.7.0.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.7.0.tar.gz
 Summary  : Core git tools
