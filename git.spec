@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.7.0
-Release  : 54
+Release  : 55
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.7.0.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.7.0.tar.gz
 Summary  : Core git tools
@@ -83,6 +83,9 @@ make test
 rm -rf %{buildroot}
 %make_install
 %find_lang git
+## make_install_append content
+install -D -m 00644 contrib/completion/git-completion.bash %{buildroot}/usr/share/bash-completion/completions/git
+## make_install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -303,6 +306,7 @@ rm -rf %{buildroot}
 
 %files data
 %defattr(-,root,root,-)
+/usr/share/bash-completion/completions/git
 /usr/share/git-core/templates/description
 /usr/share/git-core/templates/hooks/applypatch-msg.sample
 /usr/share/git-core/templates/hooks/commit-msg.sample
