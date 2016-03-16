@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.7.3
-Release  : 56
+Release  : 57
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.7.3.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.7.3.tar.gz
 Summary  : Core git tools
@@ -23,6 +23,7 @@ BuildRequires : perl-Error
 BuildRequires : tcl
 BuildRequires : tk
 BuildRequires : zlib-dev
+Patch1: stop_using_name_patch.patch
 
 %description
 Git is a fast, scalable, distributed revision control system with an
@@ -68,6 +69,7 @@ locales components for the git package.
 
 %prep
 %setup -q -n git-2.7.3
+%patch1 -p1
 
 %build
 %configure --disable-static --with-expat --with-libpcre
