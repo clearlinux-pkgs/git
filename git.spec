@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.8.1
-Release  : 60
+Release  : 61
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.8.1.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.8.1.tar.gz
 Summary  : Core git tools
