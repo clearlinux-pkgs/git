@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.8.2
-Release  : 62
+Release  : 63
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.8.2.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.8.2.tar.gz
 Summary  : Core git tools
@@ -16,12 +16,17 @@ Requires: git-locales
 Requires: git-doc
 BuildRequires : asciidoc
 BuildRequires : curl-dev
+BuildRequires : docbook-xml
 BuildRequires : expat-dev
+BuildRequires : libxml2-dev
+BuildRequires : libxslt-bin
 BuildRequires : openssl-dev
 BuildRequires : pcre-dev
 BuildRequires : perl-Error
 BuildRequires : tcl
 BuildRequires : tk
+BuildRequires : util-linux
+BuildRequires : xmlto
 BuildRequires : zlib-dev
 
 %description
@@ -70,7 +75,7 @@ locales components for the git package.
 %setup -q -n git-2.8.2
 
 %build
-%configure --disable-static --with-expat --with-libpcre
+%configure --disable-static --with-expat --with-libpcre --with-curl
 make V=1  %{?_smp_mflags}
 
 %check
@@ -85,6 +90,10 @@ rm -rf %{buildroot}
 %find_lang git
 ## make_install_append content
 install -D -m 00644 contrib/completion/git-completion.bash %{buildroot}/usr/share/bash-completion/completions/git
+pushd Documentation
+make man
+make DESTDIR=%{buildroot} install
+popd
 ## make_install_append end
 
 %files
@@ -393,7 +402,10 @@ install -D -m 00644 contrib/completion/git-completion.bash %{buildroot}/usr/shar
 
 %files doc
 %defattr(-,root,root,-)
+%doc /usr/share/man/man1/*
 %doc /usr/share/man/man3/*
+%doc /usr/share/man/man5/*
+%doc /usr/share/man/man7/*
 
 %files locales -f git.lang 
 %defattr(-,root,root,-)

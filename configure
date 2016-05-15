@@ -1,1 +1,1 @@
- --with-expat --with-libpcre
+ --with-expat --with-libpcre --with-curl 

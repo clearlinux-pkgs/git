@@ -11,3 +11,8 @@ tcl
 zlib-dev
 perl-Error
 tk
+xmlto
+util-linux
+docbook-xml
+libxslt-bin
+libxml2-dev
