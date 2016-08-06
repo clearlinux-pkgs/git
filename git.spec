@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.9.2
-Release  : 67
+Release  : 68
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.9.2.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.9.2.tar.gz
 Summary  : No detailed summary available
@@ -28,6 +28,7 @@ BuildRequires : tk
 BuildRequires : util-linux
 BuildRequires : xmlto
 BuildRequires : zlib-dev
+Patch1: autocorrupt.patch
 
 %description
 Core GIT Tests
@@ -71,6 +72,7 @@ locales components for the git package.
 
 %prep
 %setup -q -n git-2.9.2
+%patch1 -p1
 
 %build
 export LANG=C
