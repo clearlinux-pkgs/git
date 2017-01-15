@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.11.0
-Release  : 76
+Release  : 77
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.11.0.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.11.0.tar.gz
 Summary  : No detailed summary available
@@ -62,6 +62,14 @@ Group: Documentation
 doc components for the git package.
 
 
+%package extras
+Summary: extras components for the git package.
+Group: Default
+
+%description extras
+extras components for the git package.
+
+
 %package locales
 Summary: locales components for the git package.
 Group: Default
@@ -76,6 +84,7 @@ locales components for the git package.
 
 %build
 export LANG=C
+export SOURCE_DATE_EPOCH=1484510347
 %configure --disable-static --with-expat --with-libpcre --with-curl
 make V=1  %{?_smp_mflags}
 
@@ -87,6 +96,7 @@ export no_proxy=localhost
 make test
 
 %install
+export SOURCE_DATE_EPOCH=1484510347
 rm -rf %{buildroot}
 %make_install
 %find_lang git
@@ -117,13 +127,13 @@ popd
 
 %files bin
 %defattr(-,root,root,-)
+%exclude /usr/bin/gitk
 /usr/bin/git
 /usr/bin/git-cvsserver
 /usr/bin/git-receive-pack
 /usr/bin/git-shell
 /usr/bin/git-upload-archive
 /usr/bin/git-upload-pack
-/usr/bin/gitk
 /usr/libexec/git-core/git
 /usr/libexec/git-core/git-add
 /usr/libexec/git-core/git-add--interactive
@@ -318,6 +328,74 @@ popd
 
 %files data
 %defattr(-,root,root,-)
+%exclude /usr/share/git-gui/lib/about.tcl
+%exclude /usr/share/git-gui/lib/blame.tcl
+%exclude /usr/share/git-gui/lib/branch.tcl
+%exclude /usr/share/git-gui/lib/branch_checkout.tcl
+%exclude /usr/share/git-gui/lib/branch_create.tcl
+%exclude /usr/share/git-gui/lib/branch_delete.tcl
+%exclude /usr/share/git-gui/lib/branch_rename.tcl
+%exclude /usr/share/git-gui/lib/browser.tcl
+%exclude /usr/share/git-gui/lib/checkout_op.tcl
+%exclude /usr/share/git-gui/lib/choose_font.tcl
+%exclude /usr/share/git-gui/lib/choose_repository.tcl
+%exclude /usr/share/git-gui/lib/choose_rev.tcl
+%exclude /usr/share/git-gui/lib/class.tcl
+%exclude /usr/share/git-gui/lib/commit.tcl
+%exclude /usr/share/git-gui/lib/console.tcl
+%exclude /usr/share/git-gui/lib/database.tcl
+%exclude /usr/share/git-gui/lib/date.tcl
+%exclude /usr/share/git-gui/lib/diff.tcl
+%exclude /usr/share/git-gui/lib/encoding.tcl
+%exclude /usr/share/git-gui/lib/error.tcl
+%exclude /usr/share/git-gui/lib/git-gui.ico
+%exclude /usr/share/git-gui/lib/index.tcl
+%exclude /usr/share/git-gui/lib/line.tcl
+%exclude /usr/share/git-gui/lib/logo.tcl
+%exclude /usr/share/git-gui/lib/merge.tcl
+%exclude /usr/share/git-gui/lib/mergetool.tcl
+%exclude /usr/share/git-gui/lib/msgs/bg.msg
+%exclude /usr/share/git-gui/lib/msgs/de.msg
+%exclude /usr/share/git-gui/lib/msgs/el.msg
+%exclude /usr/share/git-gui/lib/msgs/fr.msg
+%exclude /usr/share/git-gui/lib/msgs/hu.msg
+%exclude /usr/share/git-gui/lib/msgs/it.msg
+%exclude /usr/share/git-gui/lib/msgs/ja.msg
+%exclude /usr/share/git-gui/lib/msgs/nb.msg
+%exclude /usr/share/git-gui/lib/msgs/pt_br.msg
+%exclude /usr/share/git-gui/lib/msgs/pt_pt.msg
+%exclude /usr/share/git-gui/lib/msgs/ru.msg
+%exclude /usr/share/git-gui/lib/msgs/sv.msg
+%exclude /usr/share/git-gui/lib/msgs/vi.msg
+%exclude /usr/share/git-gui/lib/msgs/zh_cn.msg
+%exclude /usr/share/git-gui/lib/option.tcl
+%exclude /usr/share/git-gui/lib/remote.tcl
+%exclude /usr/share/git-gui/lib/remote_add.tcl
+%exclude /usr/share/git-gui/lib/remote_branch_delete.tcl
+%exclude /usr/share/git-gui/lib/search.tcl
+%exclude /usr/share/git-gui/lib/shortcut.tcl
+%exclude /usr/share/git-gui/lib/spellcheck.tcl
+%exclude /usr/share/git-gui/lib/sshkey.tcl
+%exclude /usr/share/git-gui/lib/status_bar.tcl
+%exclude /usr/share/git-gui/lib/tclIndex
+%exclude /usr/share/git-gui/lib/themed.tcl
+%exclude /usr/share/git-gui/lib/tools.tcl
+%exclude /usr/share/git-gui/lib/tools_dlg.tcl
+%exclude /usr/share/git-gui/lib/transport.tcl
+%exclude /usr/share/git-gui/lib/win32.tcl
+%exclude /usr/share/git-gui/lib/win32_shortcut.js
+%exclude /usr/share/gitk/lib/msgs/bg.msg
+%exclude /usr/share/gitk/lib/msgs/ca.msg
+%exclude /usr/share/gitk/lib/msgs/de.msg
+%exclude /usr/share/gitk/lib/msgs/es.msg
+%exclude /usr/share/gitk/lib/msgs/fr.msg
+%exclude /usr/share/gitk/lib/msgs/hu.msg
+%exclude /usr/share/gitk/lib/msgs/it.msg
+%exclude /usr/share/gitk/lib/msgs/ja.msg
+%exclude /usr/share/gitk/lib/msgs/pt_br.msg
+%exclude /usr/share/gitk/lib/msgs/ru.msg
+%exclude /usr/share/gitk/lib/msgs/sv.msg
+%exclude /usr/share/gitk/lib/msgs/vi.msg
 /usr/share/bash-completion/completions/git
 /usr/share/git-core/templates/description
 /usr/share/git-core/templates/hooks/applypatch-msg.sample
@@ -331,6 +409,22 @@ popd
 /usr/share/git-core/templates/hooks/prepare-commit-msg.sample
 /usr/share/git-core/templates/hooks/update.sample
 /usr/share/git-core/templates/info/exclude
+/usr/share/gitweb/gitweb.cgi
+/usr/share/gitweb/static/git-favicon.png
+/usr/share/gitweb/static/git-logo.png
+/usr/share/gitweb/static/gitweb.css
+/usr/share/gitweb/static/gitweb.js
+
+%files doc
+%defattr(-,root,root,-)
+%doc /usr/share/man/man1/*
+%doc /usr/share/man/man3/*
+%doc /usr/share/man/man5/*
+%doc /usr/share/man/man7/*
+
+%files extras
+%defattr(-,root,root,-)
+/usr/bin/gitk
 /usr/share/git-gui/lib/about.tcl
 /usr/share/git-gui/lib/blame.tcl
 /usr/share/git-gui/lib/branch.tcl
@@ -399,19 +493,7 @@ popd
 /usr/share/gitk/lib/msgs/ru.msg
 /usr/share/gitk/lib/msgs/sv.msg
 /usr/share/gitk/lib/msgs/vi.msg
-/usr/share/gitweb/gitweb.cgi
-/usr/share/gitweb/static/git-favicon.png
-/usr/share/gitweb/static/git-logo.png
-/usr/share/gitweb/static/gitweb.css
-/usr/share/gitweb/static/gitweb.js
 
-%files doc
-%defattr(-,root,root,-)
-%doc /usr/share/man/man1/*
-%doc /usr/share/man/man3/*
-%doc /usr/share/man/man5/*
-%doc /usr/share/man/man7/*
-
-%files locales -f git.lang 
+%files locales -f git.lang
 %defattr(-,root,root,-)
 
