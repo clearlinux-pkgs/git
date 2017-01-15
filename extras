@@ -1,4 +1,5 @@
 /usr/bin/gitk
+/usr/bin/git-cvsserver
 /usr/share/git-gui/lib/about.tcl
 /usr/share/git-gui/lib/blame.tcl
 /usr/share/git-gui/lib/branch.tcl
