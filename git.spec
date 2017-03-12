@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.12.0
-Release  : 80
+Release  : 81
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.12.0.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.12.0.tar.gz
 Summary  : No detailed summary available
@@ -84,7 +84,7 @@ locales components for the git package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1487974806
+export SOURCE_DATE_EPOCH=1489359814
 %configure --disable-static --with-expat --with-libpcre --with-curl
 make V=1  %{?_smp_mflags}
 
@@ -96,7 +96,7 @@ export no_proxy=localhost
 make test
 
 %install
-export SOURCE_DATE_EPOCH=1487974806
+export SOURCE_DATE_EPOCH=1489359814
 rm -rf %{buildroot}
 %make_install
 %find_lang git
@@ -129,6 +129,7 @@ popd
 %defattr(-,root,root,-)
 %exclude /usr/bin/git-cvsserver
 %exclude /usr/bin/gitk
+%exclude /usr/libexec/git-core/git-p4
 /usr/bin/git
 /usr/bin/git-receive-pack
 /usr/bin/git-shell
@@ -229,7 +230,6 @@ popd
 /usr/libexec/git-core/git-mv
 /usr/libexec/git-core/git-name-rev
 /usr/libexec/git-core/git-notes
-/usr/libexec/git-core/git-p4
 /usr/libexec/git-core/git-pack-objects
 /usr/libexec/git-core/git-pack-redundant
 /usr/libexec/git-core/git-pack-refs
@@ -426,6 +426,7 @@ popd
 %defattr(-,root,root,-)
 /usr/bin/git-cvsserver
 /usr/bin/gitk
+/usr/libexec/git-core/git-p4
 /usr/share/git-gui/lib/about.tcl
 /usr/share/git-gui/lib/blame.tcl
 /usr/share/git-gui/lib/branch.tcl
