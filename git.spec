@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.12.2
-Release  : 84
+Release  : 85
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.12.2.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.12.2.tar.gz
 Summary  : No detailed summary available
@@ -84,7 +84,7 @@ locales components for the git package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1490449864
+export SOURCE_DATE_EPOCH=1491711000
 %configure --disable-static --with-expat --with-libpcre --with-curl
 make V=1  %{?_smp_mflags}
 
@@ -96,7 +96,7 @@ export no_proxy=localhost
 make test
 
 %install
-export SOURCE_DATE_EPOCH=1490449864
+export SOURCE_DATE_EPOCH=1491711000
 rm -rf %{buildroot}
 %make_install
 %find_lang git
@@ -123,7 +123,7 @@ popd
 /usr/lib/perl5/site_perl/5.24.0/Git/SVN/Prompt.pm
 /usr/lib/perl5/site_perl/5.24.0/Git/SVN/Ra.pm
 /usr/lib/perl5/site_perl/5.24.0/Git/SVN/Utils.pm
-/usr/lib/perl5/site_perl/5.24.0/x86_64-linux/auto/Git/.packlist
+/usr/lib/perl5/site_perl/5.24.0/x86_64-linux-thread-multi/auto/Git/.packlist
 
 %files bin
 %defattr(-,root,root,-)
