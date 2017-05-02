@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.12.2
-Release  : 85
+Release  : 86
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.12.2.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.12.2.tar.gz
 Summary  : No detailed summary available
