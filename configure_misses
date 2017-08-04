@@ -3,7 +3,6 @@ Configure miss: gnudiff
 Configure miss: gdiff
 Configure miss: old iconv()
 Configure miss: struct stat.st_mtimespec.tv_nsec
-Configure miss: whether system succeeds to read fopen'ed directory
 Configure miss: whether snprintf() and/or vsnprintf() return bogus value
 Configure miss: libcharset.h usability
 Configure miss: libcharset.h presence
