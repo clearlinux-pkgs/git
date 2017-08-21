@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.14.1
-Release  : 95
+Release  : 96
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.14.1.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.14.1.tar.gz
 Summary  : No detailed summary available
