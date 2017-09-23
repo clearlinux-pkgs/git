@@ -1,0 +1,19 @@
+# This file contains recursive sources that require this package
+LVM2
+R-devtools
+R-git2r
+R-roxygen2
+autofs
+filesystem
+kmod
+libvirt
+linux
+linux-aws
+linux-gce
+linux-hyperv
+linux-hyperv-lts
+linux-hyperv-mini
+linux-kvm
+linux-lts
+linux-tools
+scala
