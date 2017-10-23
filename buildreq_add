@@ -16,3 +16,5 @@ util-linux
 docbook-xml
 libxslt-bin
 libxml2-dev
+python-dev
+python3-dev
