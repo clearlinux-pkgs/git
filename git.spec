@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.15.0
-Release  : 105
+Release  : 106
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.15.0.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.15.0.tar.gz
 Summary  : No detailed summary available
@@ -90,7 +90,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1509395434
+export SOURCE_DATE_EPOCH=1509549402
 %configure --disable-static --with-expat --with-libpcre --with-curl
 make V=1  %{?_smp_mflags}
 
@@ -102,7 +102,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make test
 
 %install
-export SOURCE_DATE_EPOCH=1509395434
+export SOURCE_DATE_EPOCH=1509549402
 rm -rf %{buildroot}
 %make_install
 %find_lang git
@@ -116,6 +116,7 @@ popd
 
 %files
 %defattr(-,root,root,-)
+%exclude /usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/Git/.packlist
 /usr/lib/perl5/site_perl/5.26.1/Git.pm
 /usr/lib/perl5/site_perl/5.26.1/Git/I18N.pm
 /usr/lib/perl5/site_perl/5.26.1/Git/IndexInfo.pm
@@ -129,7 +130,6 @@ popd
 /usr/lib/perl5/site_perl/5.26.1/Git/SVN/Prompt.pm
 /usr/lib/perl5/site_perl/5.26.1/Git/SVN/Ra.pm
 /usr/lib/perl5/site_perl/5.26.1/Git/SVN/Utils.pm
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/Git/.packlist
 
 %files bin
 %defattr(-,root,root,-)
