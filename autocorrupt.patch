@@ -5,7 +5,7 @@
  }
  
 -static int autocorrect;
-+static int autocorrect = 5;
++static int autocorrect = 15;
  static struct cmdnames aliases;
  
  static int git_unknown_cmd_config(const char *var, const char *value, void *cb)
