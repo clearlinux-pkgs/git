@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.16.2
-Release  : 112
+Release  : 113
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.16.2.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.16.2.tar.gz
 Summary  : No detailed summary available
@@ -90,7 +90,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1518814555
+export SOURCE_DATE_EPOCH=1521340545
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 %configure --disable-static --with-expat --with-libpcre --with-curl
 make  %{?_smp_mflags}
 
@@ -102,7 +106,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make test
 
 %install
-export SOURCE_DATE_EPOCH=1518814555
+export SOURCE_DATE_EPOCH=1521340545
 rm -rf %{buildroot}
 %make_install
 %find_lang git

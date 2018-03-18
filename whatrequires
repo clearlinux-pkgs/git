@@ -1,8 +1,19 @@
 # This file contains recursive sources that require this package
 LVM2
+R-NMF
+R-RcppProgress
 R-devtools
+R-doRNG
+R-ggjoy
+R-ggridges
 R-git2r
+R-modelr
+R-pkgmaker
+R-reprex
+R-rngtools
 R-roxygen2
+R-rstanarm
+R-tidyverse
 autofs
 filesystem
 kmod
