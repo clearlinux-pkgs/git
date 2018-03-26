@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.16.3
-Release  : 115
+Release  : 116
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.16.3.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.16.3.tar.gz
 Summary  : No detailed summary available
