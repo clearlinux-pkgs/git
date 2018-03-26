@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.16.3
-Release  : 114
+Release  : 115
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.16.3.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.16.3.tar.gz
 Summary  : No detailed summary available
@@ -84,13 +84,16 @@ locales components for the git package.
 %prep
 %setup -q -n git-2.16.3
 %patch1 -p1
+pushd ..
+cp -a git-2.16.3 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1521800122
+export SOURCE_DATE_EPOCH=1522086523
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -98,6 +101,13 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semanti
 %configure --disable-static --with-expat --with-libpcre --with-curl
 make  %{?_smp_mflags}
 
+pushd ../buildavx2/
+export CFLAGS="$CFLAGS -m64 -march=haswell"
+export CXXFLAGS="$CXXFLAGS -m64 -march=haswell"
+export LDFLAGS="$LDFLAGS -m64 -march=haswell"
+%configure --disable-static --with-expat --with-libpcre --with-curl   --libdir=/usr/lib64/haswell --bindir=/usr/bin/haswell
+make  %{?_smp_mflags}
+popd
 %check
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
@@ -106,8 +116,11 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make test
 
 %install
-export SOURCE_DATE_EPOCH=1521800122
+export SOURCE_DATE_EPOCH=1522086523
 rm -rf %{buildroot}
+pushd ../buildavx2/
+%make_install
+popd
 %make_install
 %find_lang git
 ## make_install_append content
@@ -146,6 +159,13 @@ popd
 /usr/bin/git-shell
 /usr/bin/git-upload-archive
 /usr/bin/git-upload-pack
+/usr/bin/haswell/git
+/usr/bin/haswell/git-cvsserver
+/usr/bin/haswell/git-receive-pack
+/usr/bin/haswell/git-shell
+/usr/bin/haswell/git-upload-archive
+/usr/bin/haswell/git-upload-pack
+/usr/bin/haswell/gitk
 /usr/libexec/git-core/git
 /usr/libexec/git-core/git-add
 /usr/libexec/git-core/git-add--interactive
