@@ -2,6 +2,10 @@
 LVM2
 R-NMF
 R-RcppProgress
+R-bayesplot
+R-brms
+R-broom
+R-caret
 R-devtools
 R-doRNG
 R-ggjoy
@@ -9,10 +13,12 @@ R-ggridges
 R-git2r
 R-modelr
 R-pkgmaker
+R-recipes
 R-reprex
 R-rngtools
 R-roxygen2
 R-rstanarm
+R-shinystan
 R-tidyverse
 autofs
 filesystem
