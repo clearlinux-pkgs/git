@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.17.0
-Release  : 118
+Release  : 119
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.17.0.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.17.0.tar.gz
 Summary  : No detailed summary available
