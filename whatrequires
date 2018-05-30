@@ -1,26 +1,18 @@
 # This file contains recursive sources that require this package
 LVM2
 R-NMF
-R-RcppProgress
-R-bayesplot
-R-brms
-R-broom
-R-caret
 R-devtools
 R-doRNG
-R-ggjoy
-R-ggridges
 R-git2r
 R-modelr
 R-pkgmaker
-R-recipes
 R-reprex
 R-rngtools
 R-roxygen2
 R-rstanarm
-R-shinystan
 R-tidyverse
 autofs
+clr-init
 filesystem
 kmod
 libvirt
@@ -32,5 +24,6 @@ linux-hyperv-lts
 linux-hyperv-mini
 linux-kvm
 linux-lts
+linux-oracle
 linux-pk414
 linux-tools
