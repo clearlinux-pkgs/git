@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.17.1
-Release  : 120
+Release  : 121
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.17.1.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.17.1.tar.gz
 Summary  : No detailed summary available
@@ -94,7 +94,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1527653275
+export SOURCE_DATE_EPOCH=1528572337
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -118,7 +118,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make test
 
 %install
-export SOURCE_DATE_EPOCH=1527653275
+export SOURCE_DATE_EPOCH=1528572337
 rm -rf %{buildroot}
 pushd ../buildavx2/
 %make_install
@@ -140,7 +140,16 @@ popd
 %defattr(-,root,root,-)
 %exclude /usr/bin/git-cvsserver
 %exclude /usr/bin/gitk
+%exclude /usr/libexec/git-core/git-add--interactive
+%exclude /usr/libexec/git-core/git-archimport
+%exclude /usr/libexec/git-core/git-cvsexportcommit
+%exclude /usr/libexec/git-core/git-cvsimport
+%exclude /usr/libexec/git-core/git-cvsserver
+%exclude /usr/libexec/git-core/git-instaweb
 %exclude /usr/libexec/git-core/git-p4
+%exclude /usr/libexec/git-core/git-request-pull
+%exclude /usr/libexec/git-core/git-send-email
+%exclude /usr/libexec/git-core/git-svn
 /usr/bin/git
 /usr/bin/git-receive-pack
 /usr/bin/git-shell
@@ -148,11 +157,9 @@ popd
 /usr/bin/git-upload-pack
 /usr/libexec/git-core/git
 /usr/libexec/git-core/git-add
-/usr/libexec/git-core/git-add--interactive
 /usr/libexec/git-core/git-am
 /usr/libexec/git-core/git-annotate
 /usr/libexec/git-core/git-apply
-/usr/libexec/git-core/git-archimport
 /usr/libexec/git-core/git-archive
 /usr/libexec/git-core/git-bisect
 /usr/libexec/git-core/git-bisect--helper
@@ -180,9 +187,6 @@ popd
 /usr/libexec/git-core/git-credential-cache
 /usr/libexec/git-core/git-credential-cache--daemon
 /usr/libexec/git-core/git-credential-store
-/usr/libexec/git-core/git-cvsexportcommit
-/usr/libexec/git-core/git-cvsimport
-/usr/libexec/git-core/git-cvsserver
 /usr/libexec/git-core/git-daemon
 /usr/libexec/git-core/git-describe
 /usr/libexec/git-core/git-diff
@@ -215,7 +219,6 @@ popd
 /usr/libexec/git-core/git-index-pack
 /usr/libexec/git-core/git-init
 /usr/libexec/git-core/git-init-db
-/usr/libexec/git-core/git-instaweb
 /usr/libexec/git-core/git-interpret-trailers
 /usr/libexec/git-core/git-log
 /usr/libexec/git-core/git-ls-files
@@ -269,14 +272,12 @@ popd
 /usr/libexec/git-core/git-remote-testsvn
 /usr/libexec/git-core/git-repack
 /usr/libexec/git-core/git-replace
-/usr/libexec/git-core/git-request-pull
 /usr/libexec/git-core/git-rerere
 /usr/libexec/git-core/git-reset
 /usr/libexec/git-core/git-rev-list
 /usr/libexec/git-core/git-rev-parse
 /usr/libexec/git-core/git-revert
 /usr/libexec/git-core/git-rm
-/usr/libexec/git-core/git-send-email
 /usr/libexec/git-core/git-send-pack
 /usr/libexec/git-core/git-sh-i18n
 /usr/libexec/git-core/git-sh-i18n--envsubst
@@ -293,7 +294,6 @@ popd
 /usr/libexec/git-core/git-stripspace
 /usr/libexec/git-core/git-submodule
 /usr/libexec/git-core/git-submodule--helper
-/usr/libexec/git-core/git-svn
 /usr/libexec/git-core/git-symbolic-ref
 /usr/libexec/git-core/git-tag
 /usr/libexec/git-core/git-unpack-file
@@ -451,7 +451,16 @@ popd
 %defattr(-,root,root,-)
 /usr/bin/git-cvsserver
 /usr/bin/gitk
+/usr/libexec/git-core/git-add--interactive
+/usr/libexec/git-core/git-archimport
+/usr/libexec/git-core/git-cvsexportcommit
+/usr/libexec/git-core/git-cvsimport
+/usr/libexec/git-core/git-cvsserver
+/usr/libexec/git-core/git-instaweb
 /usr/libexec/git-core/git-p4
+/usr/libexec/git-core/git-request-pull
+/usr/libexec/git-core/git-send-email
+/usr/libexec/git-core/git-svn
 /usr/share/git-gui/lib/about.tcl
 /usr/share/git-gui/lib/blame.tcl
 /usr/share/git-gui/lib/branch.tcl
