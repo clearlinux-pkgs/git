@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.17.1
-Release  : 122
+Release  : 123
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.17.1.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.17.1.tar.gz
 Summary  : No detailed summary available
@@ -94,7 +94,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1528572337
+export SOURCE_DATE_EPOCH=1528667598
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -118,7 +118,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make test
 
 %install
-export SOURCE_DATE_EPOCH=1528572337
+export SOURCE_DATE_EPOCH=1528667598
 rm -rf %{buildroot}
 pushd ../buildavx2/
 %make_install
@@ -339,6 +339,9 @@ popd
 
 %files data
 %defattr(-,root,root,-)
+%exclude /usr/share/git-core/templates/hooks/fsmonitor-watchman.sample
+%exclude /usr/share/git-core/templates/hooks/pre-rebase.sample
+%exclude /usr/share/git-core/templates/hooks/prepare-commit-msg.sample
 %exclude /usr/share/git-gui/lib/about.tcl
 %exclude /usr/share/git-gui/lib/blame.tcl
 %exclude /usr/share/git-gui/lib/branch.tcl
@@ -407,45 +410,42 @@ popd
 %exclude /usr/share/gitk/lib/msgs/ru.msg
 %exclude /usr/share/gitk/lib/msgs/sv.msg
 %exclude /usr/share/gitk/lib/msgs/vi.msg
+%exclude /usr/share/gitweb/gitweb.cgi
+%exclude /usr/share/perl5/FromCPAN/Error.pm
+%exclude /usr/share/perl5/FromCPAN/Mail/Address.pm
+%exclude /usr/share/perl5/Git.pm
+%exclude /usr/share/perl5/Git/I18N.pm
+%exclude /usr/share/perl5/Git/IndexInfo.pm
+%exclude /usr/share/perl5/Git/LoadCPAN.pm
+%exclude /usr/share/perl5/Git/LoadCPAN/Error.pm
+%exclude /usr/share/perl5/Git/LoadCPAN/Mail/Address.pm
+%exclude /usr/share/perl5/Git/Packet.pm
+%exclude /usr/share/perl5/Git/SVN.pm
+%exclude /usr/share/perl5/Git/SVN/Editor.pm
+%exclude /usr/share/perl5/Git/SVN/Fetcher.pm
+%exclude /usr/share/perl5/Git/SVN/GlobSpec.pm
+%exclude /usr/share/perl5/Git/SVN/Log.pm
+%exclude /usr/share/perl5/Git/SVN/Memoize/YAML.pm
+%exclude /usr/share/perl5/Git/SVN/Migration.pm
+%exclude /usr/share/perl5/Git/SVN/Prompt.pm
+%exclude /usr/share/perl5/Git/SVN/Ra.pm
+%exclude /usr/share/perl5/Git/SVN/Utils.pm
 /usr/share/bash-completion/completions/git
 /usr/share/git-core/templates/description
 /usr/share/git-core/templates/hooks/applypatch-msg.sample
 /usr/share/git-core/templates/hooks/commit-msg.sample
-/usr/share/git-core/templates/hooks/fsmonitor-watchman.sample
 /usr/share/git-core/templates/hooks/post-update.sample
 /usr/share/git-core/templates/hooks/pre-applypatch.sample
 /usr/share/git-core/templates/hooks/pre-commit.sample
 /usr/share/git-core/templates/hooks/pre-push.sample
-/usr/share/git-core/templates/hooks/pre-rebase.sample
 /usr/share/git-core/templates/hooks/pre-receive.sample
-/usr/share/git-core/templates/hooks/prepare-commit-msg.sample
 /usr/share/git-core/templates/hooks/update.sample
 /usr/share/git-core/templates/info/exclude
 /usr/share/gitk/lib/msgs/pt_pt.msg
-/usr/share/gitweb/gitweb.cgi
 /usr/share/gitweb/static/git-favicon.png
 /usr/share/gitweb/static/git-logo.png
 /usr/share/gitweb/static/gitweb.css
 /usr/share/gitweb/static/gitweb.js
-/usr/share/perl5/FromCPAN/Error.pm
-/usr/share/perl5/FromCPAN/Mail/Address.pm
-/usr/share/perl5/Git.pm
-/usr/share/perl5/Git/I18N.pm
-/usr/share/perl5/Git/IndexInfo.pm
-/usr/share/perl5/Git/LoadCPAN.pm
-/usr/share/perl5/Git/LoadCPAN/Error.pm
-/usr/share/perl5/Git/LoadCPAN/Mail/Address.pm
-/usr/share/perl5/Git/Packet.pm
-/usr/share/perl5/Git/SVN.pm
-/usr/share/perl5/Git/SVN/Editor.pm
-/usr/share/perl5/Git/SVN/Fetcher.pm
-/usr/share/perl5/Git/SVN/GlobSpec.pm
-/usr/share/perl5/Git/SVN/Log.pm
-/usr/share/perl5/Git/SVN/Memoize/YAML.pm
-/usr/share/perl5/Git/SVN/Migration.pm
-/usr/share/perl5/Git/SVN/Prompt.pm
-/usr/share/perl5/Git/SVN/Ra.pm
-/usr/share/perl5/Git/SVN/Utils.pm
 
 %files extras
 %defattr(-,root,root,-)
@@ -461,6 +461,9 @@ popd
 /usr/libexec/git-core/git-request-pull
 /usr/libexec/git-core/git-send-email
 /usr/libexec/git-core/git-svn
+/usr/share/git-core/templates/hooks/fsmonitor-watchman.sample
+/usr/share/git-core/templates/hooks/pre-rebase.sample
+/usr/share/git-core/templates/hooks/prepare-commit-msg.sample
 /usr/share/git-gui/lib/about.tcl
 /usr/share/git-gui/lib/blame.tcl
 /usr/share/git-gui/lib/branch.tcl
@@ -529,6 +532,26 @@ popd
 /usr/share/gitk/lib/msgs/ru.msg
 /usr/share/gitk/lib/msgs/sv.msg
 /usr/share/gitk/lib/msgs/vi.msg
+/usr/share/gitweb/gitweb.cgi
+/usr/share/perl5/FromCPAN/Error.pm
+/usr/share/perl5/FromCPAN/Mail/Address.pm
+/usr/share/perl5/Git.pm
+/usr/share/perl5/Git/I18N.pm
+/usr/share/perl5/Git/IndexInfo.pm
+/usr/share/perl5/Git/LoadCPAN.pm
+/usr/share/perl5/Git/LoadCPAN/Error.pm
+/usr/share/perl5/Git/LoadCPAN/Mail/Address.pm
+/usr/share/perl5/Git/Packet.pm
+/usr/share/perl5/Git/SVN.pm
+/usr/share/perl5/Git/SVN/Editor.pm
+/usr/share/perl5/Git/SVN/Fetcher.pm
+/usr/share/perl5/Git/SVN/GlobSpec.pm
+/usr/share/perl5/Git/SVN/Log.pm
+/usr/share/perl5/Git/SVN/Memoize/YAML.pm
+/usr/share/perl5/Git/SVN/Migration.pm
+/usr/share/perl5/Git/SVN/Prompt.pm
+/usr/share/perl5/Git/SVN/Ra.pm
+/usr/share/perl5/Git/SVN/Utils.pm
 
 %files man
 %defattr(-,root,root,-)
