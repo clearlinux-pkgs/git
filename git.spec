@@ -24,7 +24,7 @@ BuildRequires : libxslt-bin
 BuildRequires : openssl-dev
 BuildRequires : pcre-dev
 BuildRequires : perl-Error
-BuildRequires : python-dev
+
 BuildRequires : python3-dev
 BuildRequires : tcl
 BuildRequires : tk
