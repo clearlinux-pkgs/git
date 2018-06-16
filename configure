@@ -1,1 +1,2 @@
  --with-expat --with-libpcre --with-curl 
+PYTHON=/usr/bin/python3

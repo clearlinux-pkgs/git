@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.17.1
-Release  : 124
+Release  : 125
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.17.1.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.17.1.tar.gz
 Summary  : No detailed summary available
@@ -12,6 +12,7 @@ Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause BSL-1.0 GPL-2.0 MIT
 Requires: git-bin
 Requires: git-data
+Requires: git-license
 Requires: git-locales
 Requires: git-man
 BuildRequires : asciidoc
@@ -24,7 +25,6 @@ BuildRequires : libxslt-bin
 BuildRequires : openssl-dev
 BuildRequires : pcre-dev
 BuildRequires : perl-Error
-
 BuildRequires : python3-dev
 BuildRequires : tcl
 BuildRequires : tk
@@ -44,6 +44,7 @@ and read their output.
 Summary: bin components for the git package.
 Group: Binaries
 Requires: git-data
+Requires: git-license
 Requires: git-man
 
 %description bin
@@ -58,12 +59,29 @@ Group: Data
 data components for the git package.
 
 
+%package doc
+Summary: doc components for the git package.
+Group: Documentation
+Requires: git-man
+
+%description doc
+doc components for the git package.
+
+
 %package extras
 Summary: extras components for the git package.
 Group: Default
 
 %description extras
 extras components for the git package.
+
+
+%package license
+Summary: license components for the git package.
+Group: Default
+
+%description license
+license components for the git package.
 
 
 %package locales
@@ -94,12 +112,13 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1528667598
+export SOURCE_DATE_EPOCH=1529171718
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-%configure --disable-static --with-expat --with-libpcre --with-curl
+%configure --disable-static --with-expat --with-libpcre --with-curl \
+PYTHON=/usr/bin/python3
 make  %{?_smp_mflags}
 
 unset PKG_CONFIG_PATH
@@ -107,7 +126,8 @@ pushd ../buildavx2/
 export CFLAGS="$CFLAGS -m64 -march=haswell"
 export CXXFLAGS="$CXXFLAGS -m64 -march=haswell"
 export LDFLAGS="$LDFLAGS -m64 -march=haswell"
-%configure --disable-static --with-expat --with-libpcre --with-curl   --libdir=/usr/lib64/haswell
+%configure --disable-static --with-expat --with-libpcre --with-curl \
+PYTHON=/usr/bin/python3   --libdir=/usr/lib64/haswell
 make  %{?_smp_mflags}
 popd
 %check
@@ -118,8 +138,16 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make test
 
 %install
-export SOURCE_DATE_EPOCH=1528667598
+export SOURCE_DATE_EPOCH=1529171718
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/git
+cp COPYING %{buildroot}/usr/share/doc/git/COPYING
+cp vcs-svn/LICENSE %{buildroot}/usr/share/doc/git/vcs-svn_LICENSE
+cp t/diff-lib/COPYING %{buildroot}/usr/share/doc/git/t_diff-lib_COPYING
+cp sha1dc/LICENSE.txt %{buildroot}/usr/share/doc/git/sha1dc_LICENSE.txt
+cp contrib/subtree/COPYING %{buildroot}/usr/share/doc/git/contrib_subtree_COPYING
+cp contrib/persistent-https/LICENSE %{buildroot}/usr/share/doc/git/contrib_persistent-https_LICENSE
+cp compat/nedmalloc/License.txt %{buildroot}/usr/share/doc/git/compat_nedmalloc_License.txt
 pushd ../buildavx2/
 %make_install
 popd
@@ -447,6 +475,10 @@ popd
 /usr/share/gitweb/static/gitweb.css
 /usr/share/gitweb/static/gitweb.js
 
+%files doc
+%defattr(0644,root,root,0755)
+%doc /usr/share/doc/git/*
+
 %files extras
 %defattr(-,root,root,-)
 /usr/bin/git-cvsserver
@@ -552,6 +584,15 @@ popd
 /usr/share/perl5/Git/SVN/Prompt.pm
 /usr/share/perl5/Git/SVN/Ra.pm
 /usr/share/perl5/Git/SVN/Utils.pm
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/git/COPYING
+/usr/share/doc/git/contrib_persistent-https_LICENSE
+/usr/share/doc/git/contrib_subtree_COPYING
+/usr/share/doc/git/sha1dc_LICENSE.txt
+/usr/share/doc/git/t_diff-lib_COPYING
+/usr/share/doc/git/vcs-svn_LICENSE
 
 %files man
 %defattr(-,root,root,-)
