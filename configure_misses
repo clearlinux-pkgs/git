@@ -1,6 +1,7 @@
 Configure miss: if linker supports -R
 Configure miss: gnudiff
 Configure miss: gdiff
+Configure miss: pcre2_config_8 in -lpcre2-8
 Configure miss: old iconv()
 Configure miss: struct stat.st_mtimespec.tv_nsec
 Configure miss: whether snprintf() and/or vsnprintf() return bogus value
@@ -15,6 +16,7 @@ Configure miss: POSIX Threads with '-mt'
 Configure miss: if linker supports -R
 Configure miss: gnudiff
 Configure miss: gdiff
+Configure miss: pcre2_config_8 in -lpcre2-8
 Configure miss: old iconv()
 Configure miss: struct stat.st_mtimespec.tv_nsec
 Configure miss: whether snprintf() and/or vsnprintf() return bogus value
