@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.18.0
-Release  : 126
+Release  : 128
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.18.0.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.18.0.tar.gz
 Summary  : No detailed summary available
@@ -23,7 +23,7 @@ BuildRequires : go
 BuildRequires : libxml2-dev
 BuildRequires : libxslt-bin
 BuildRequires : openssl-dev
-BuildRequires : pcre-dev
+BuildRequires : pcre2-dev
 BuildRequires : perl-Error
 BuildRequires : python3-dev
 BuildRequires : tcl
@@ -112,7 +112,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1529697739
+export SOURCE_DATE_EPOCH=1529701898
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -138,7 +138,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make test
 
 %install
-export SOURCE_DATE_EPOCH=1529697739
+export SOURCE_DATE_EPOCH=1529701898
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/git
 cp COPYING %{buildroot}/usr/share/doc/git/COPYING

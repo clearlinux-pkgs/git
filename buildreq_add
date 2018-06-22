@@ -3,7 +3,7 @@
 # desirable. One name per line, no whitespace.
 #
 openssl-dev
-pcre-dev
+pcre2-dev
 asciidoc
 curl-dev
 expat-dev
