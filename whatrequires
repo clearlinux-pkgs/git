@@ -1,5 +1,6 @@
 # This file contains recursive sources that require this package
 R-git2r
+assimp
 cmake
 cmocka
 filesystem
