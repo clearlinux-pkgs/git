@@ -1,4 +1,12 @@
 # This file contains recursive sources that require this package
 R-git2r
+cmake
+cmocka
 filesystem
+gcompris-qt
+ipmctl
+keepassxc
+kirigami2
 kmod
+messagelib
+openal-soft
