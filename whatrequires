@@ -1,6 +1,9 @@
 # This file contains recursive sources that require this package
+FreeRDP
 R-git2r
+Remmina
 assimp
+ceph
 cmake
 cmocka
 filesystem

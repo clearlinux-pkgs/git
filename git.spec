@@ -4,17 +4,17 @@
 #
 Name     : git
 Version  : 2.19.0
-Release  : 130
+Release  : 131
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.19.0.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.19.0.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause BSL-1.0 GPL-2.0 MIT
-Requires: git-bin
-Requires: git-data
-Requires: git-license
-Requires: git-locales
-Requires: git-man
+Requires: git-bin = %{version}-%{release}
+Requires: git-data = %{version}-%{release}
+Requires: git-license = %{version}-%{release}
+Requires: git-locales = %{version}-%{release}
+Requires: git-man = %{version}-%{release}
 BuildRequires : asciidoc
 BuildRequires : buildreq-golang
 BuildRequires : curl-dev
@@ -43,9 +43,9 @@ and read their output.
 %package bin
 Summary: bin components for the git package.
 Group: Binaries
-Requires: git-data
-Requires: git-license
-Requires: git-man
+Requires: git-data = %{version}-%{release}
+Requires: git-license = %{version}-%{release}
+Requires: git-man = %{version}-%{release}
 
 %description bin
 bin components for the git package.
@@ -57,15 +57,6 @@ Group: Data
 
 %description data
 data components for the git package.
-
-
-%package doc
-Summary: doc components for the git package.
-Group: Documentation
-Requires: git-man
-
-%description doc
-doc components for the git package.
 
 
 %package extras
@@ -112,7 +103,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536632638
+export SOURCE_DATE_EPOCH=1537916651
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -138,16 +129,16 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make test
 
 %install
-export SOURCE_DATE_EPOCH=1536632638
+export SOURCE_DATE_EPOCH=1537916651
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/git
-cp COPYING %{buildroot}/usr/share/doc/git/COPYING
-cp compat/nedmalloc/License.txt %{buildroot}/usr/share/doc/git/compat_nedmalloc_License.txt
-cp contrib/persistent-https/LICENSE %{buildroot}/usr/share/doc/git/contrib_persistent-https_LICENSE
-cp contrib/subtree/COPYING %{buildroot}/usr/share/doc/git/contrib_subtree_COPYING
-cp sha1dc/LICENSE.txt %{buildroot}/usr/share/doc/git/sha1dc_LICENSE.txt
-cp t/diff-lib/COPYING %{buildroot}/usr/share/doc/git/t_diff-lib_COPYING
-cp vcs-svn/LICENSE %{buildroot}/usr/share/doc/git/vcs-svn_LICENSE
+mkdir -p %{buildroot}/usr/share/package-licenses/git
+cp COPYING %{buildroot}/usr/share/package-licenses/git/COPYING
+cp compat/nedmalloc/License.txt %{buildroot}/usr/share/package-licenses/git/compat_nedmalloc_License.txt
+cp contrib/persistent-https/LICENSE %{buildroot}/usr/share/package-licenses/git/contrib_persistent-https_LICENSE
+cp contrib/subtree/COPYING %{buildroot}/usr/share/package-licenses/git/contrib_subtree_COPYING
+cp sha1dc/LICENSE.txt %{buildroot}/usr/share/package-licenses/git/sha1dc_LICENSE.txt
+cp t/diff-lib/COPYING %{buildroot}/usr/share/package-licenses/git/t_diff-lib_COPYING
+cp vcs-svn/LICENSE %{buildroot}/usr/share/package-licenses/git/vcs-svn_LICENSE
 pushd ../buildavx2/
 %make_install_avx2
 popd
@@ -484,10 +475,7 @@ popd
 /usr/share/gitweb/static/git-logo.png
 /usr/share/gitweb/static/gitweb.css
 /usr/share/gitweb/static/gitweb.js
-
-%files doc
-%defattr(0644,root,root,0755)
-%doc /usr/share/doc/git/*
+/usr/share/package-licenses/git/compat_nedmalloc_License.txt
 
 %files extras
 %defattr(-,root,root,-)
@@ -597,12 +585,12 @@ popd
 
 %files license
 %defattr(-,root,root,-)
-/usr/share/doc/git/COPYING
-/usr/share/doc/git/contrib_persistent-https_LICENSE
-/usr/share/doc/git/contrib_subtree_COPYING
-/usr/share/doc/git/sha1dc_LICENSE.txt
-/usr/share/doc/git/t_diff-lib_COPYING
-/usr/share/doc/git/vcs-svn_LICENSE
+/usr/share/package-licenses/git/COPYING
+/usr/share/package-licenses/git/contrib_persistent-https_LICENSE
+/usr/share/package-licenses/git/contrib_subtree_COPYING
+/usr/share/package-licenses/git/sha1dc_LICENSE.txt
+/usr/share/package-licenses/git/t_diff-lib_COPYING
+/usr/share/package-licenses/git/vcs-svn_LICENSE
 
 %files man
 %defattr(-,root,root,-)
