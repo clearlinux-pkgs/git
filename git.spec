@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.19.1
-Release  : 133
+Release  : 134
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.19.1.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.19.1.tar.gz
 Summary  : No detailed summary available
