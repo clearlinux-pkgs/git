@@ -2,7 +2,10 @@
 FreeRDP
 R-git2r
 Remmina
+Z3
 assimp
+atom
+bcc
 ceph
 cmake
 cmocka
@@ -14,4 +17,7 @@ kirigami2
 kmod
 krita
 messagelib
+mraa
+mxnet
 openal-soft
+upm
