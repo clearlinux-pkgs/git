@@ -1,11 +1,16 @@
 # This file contains recursive sources that require this package
 FreeRDP
+OpenColorIO
 R-git2r
 Remmina
+VTK
 Z3
 assimp
 atom
 bcc
+blender
+bro
+caffe
 ceph
 cmake
 cmocka
@@ -20,4 +25,5 @@ messagelib
 mraa
 mxnet
 openal-soft
+quassel
 upm
