@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.20.0
-Release  : 138
+Release  : 139
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.20.0.tar.xz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.20.0.tar.xz
 Summary  : No detailed summary available
@@ -115,7 +115,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1544538284
+export SOURCE_DATE_EPOCH=1544551646
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -141,7 +141,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make test
 
 %install
-export SOURCE_DATE_EPOCH=1544538284
+export SOURCE_DATE_EPOCH=1544551646
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/git
 cp COPYING %{buildroot}/usr/share/package-licenses/git/COPYING
