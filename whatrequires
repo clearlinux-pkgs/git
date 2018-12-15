@@ -14,6 +14,7 @@ caffe
 ceph
 cmake
 cmocka
+compat-mariadb-soname18
 filesystem
 gcompris-qt
 ipmctl
@@ -21,6 +22,7 @@ keepassxc
 kirigami2
 kmod
 krita
+mariadb
 messagelib
 mraa
 mxnet
