@@ -4,10 +4,10 @@
 #
 Name     : git
 Version  : 2.20.1
-Release  : 141
+Release  : 142
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.20.1.tar.xz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.20.1.tar.xz
-Summary  : No detailed summary available
+Summary  : the fast distributed version control system
 Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause BSL-1.0 GPL-2.0 MIT
 Requires: git-bin = %{version}-%{release}
@@ -36,11 +36,13 @@ BuildRequires : zlib-dev
 Patch1: autocorrupt.patch
 
 %description
-Core GIT Tests
-==============
-This directory holds many test scripts for core GIT tools.  The
-first part of this short document describes how to run the tests
-and read their output.
+git-jump
+========
+Git-jump is a script for helping you jump to "interesting" parts of your
+project in your editor. It works by outputting a set of interesting
+spots in the "quickfix" format, which editors like vim can use as a
+queue of places to visit (this feature is usually used to jump to errors
+produced by a compiler). For example, given a diff like this:
 
 %package bin
 Summary: bin components for the git package.
@@ -115,7 +117,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1544884557
+export SOURCE_DATE_EPOCH=1548341730
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -141,7 +143,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make test
 
 %install
-export SOURCE_DATE_EPOCH=1544884557
+export SOURCE_DATE_EPOCH=1548341730
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/git
 cp COPYING %{buildroot}/usr/share/package-licenses/git/COPYING
@@ -295,7 +297,6 @@ popd
 %files extras
 %defattr(-,root,root,-)
 /usr/bin/git-cvsserver
-/usr/bin/gitk
 /usr/libexec/git-core/git-add--interactive
 /usr/libexec/git-core/git-archimport
 /usr/libexec/git-core/git-cvsexportcommit
@@ -309,74 +310,6 @@ popd
 /usr/share/git-core/templates/hooks/fsmonitor-watchman.sample
 /usr/share/git-core/templates/hooks/pre-rebase.sample
 /usr/share/git-core/templates/hooks/prepare-commit-msg.sample
-/usr/share/git-gui/lib/about.tcl
-/usr/share/git-gui/lib/blame.tcl
-/usr/share/git-gui/lib/branch.tcl
-/usr/share/git-gui/lib/branch_checkout.tcl
-/usr/share/git-gui/lib/branch_create.tcl
-/usr/share/git-gui/lib/branch_delete.tcl
-/usr/share/git-gui/lib/branch_rename.tcl
-/usr/share/git-gui/lib/browser.tcl
-/usr/share/git-gui/lib/checkout_op.tcl
-/usr/share/git-gui/lib/choose_font.tcl
-/usr/share/git-gui/lib/choose_repository.tcl
-/usr/share/git-gui/lib/choose_rev.tcl
-/usr/share/git-gui/lib/class.tcl
-/usr/share/git-gui/lib/commit.tcl
-/usr/share/git-gui/lib/console.tcl
-/usr/share/git-gui/lib/database.tcl
-/usr/share/git-gui/lib/date.tcl
-/usr/share/git-gui/lib/diff.tcl
-/usr/share/git-gui/lib/encoding.tcl
-/usr/share/git-gui/lib/error.tcl
-/usr/share/git-gui/lib/git-gui.ico
-/usr/share/git-gui/lib/index.tcl
-/usr/share/git-gui/lib/line.tcl
-/usr/share/git-gui/lib/logo.tcl
-/usr/share/git-gui/lib/merge.tcl
-/usr/share/git-gui/lib/mergetool.tcl
-/usr/share/git-gui/lib/msgs/bg.msg
-/usr/share/git-gui/lib/msgs/de.msg
-/usr/share/git-gui/lib/msgs/el.msg
-/usr/share/git-gui/lib/msgs/fr.msg
-/usr/share/git-gui/lib/msgs/hu.msg
-/usr/share/git-gui/lib/msgs/it.msg
-/usr/share/git-gui/lib/msgs/ja.msg
-/usr/share/git-gui/lib/msgs/nb.msg
-/usr/share/git-gui/lib/msgs/pt_br.msg
-/usr/share/git-gui/lib/msgs/pt_pt.msg
-/usr/share/git-gui/lib/msgs/ru.msg
-/usr/share/git-gui/lib/msgs/sv.msg
-/usr/share/git-gui/lib/msgs/vi.msg
-/usr/share/git-gui/lib/msgs/zh_cn.msg
-/usr/share/git-gui/lib/option.tcl
-/usr/share/git-gui/lib/remote.tcl
-/usr/share/git-gui/lib/remote_add.tcl
-/usr/share/git-gui/lib/remote_branch_delete.tcl
-/usr/share/git-gui/lib/search.tcl
-/usr/share/git-gui/lib/shortcut.tcl
-/usr/share/git-gui/lib/spellcheck.tcl
-/usr/share/git-gui/lib/sshkey.tcl
-/usr/share/git-gui/lib/status_bar.tcl
-/usr/share/git-gui/lib/tclIndex
-/usr/share/git-gui/lib/themed.tcl
-/usr/share/git-gui/lib/tools.tcl
-/usr/share/git-gui/lib/tools_dlg.tcl
-/usr/share/git-gui/lib/transport.tcl
-/usr/share/git-gui/lib/win32.tcl
-/usr/share/git-gui/lib/win32_shortcut.js
-/usr/share/gitk/lib/msgs/bg.msg
-/usr/share/gitk/lib/msgs/ca.msg
-/usr/share/gitk/lib/msgs/de.msg
-/usr/share/gitk/lib/msgs/es.msg
-/usr/share/gitk/lib/msgs/fr.msg
-/usr/share/gitk/lib/msgs/hu.msg
-/usr/share/gitk/lib/msgs/it.msg
-/usr/share/gitk/lib/msgs/ja.msg
-/usr/share/gitk/lib/msgs/pt_br.msg
-/usr/share/gitk/lib/msgs/ru.msg
-/usr/share/gitk/lib/msgs/sv.msg
-/usr/share/gitk/lib/msgs/vi.msg
 /usr/share/gitweb/gitweb.cgi
 /usr/share/perl5/FromCPAN/Error.pm
 /usr/share/perl5/FromCPAN/Mail/Address.pm

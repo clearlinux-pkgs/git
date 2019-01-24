@@ -15,6 +15,7 @@ ceph
 cmake
 cmocka
 compat-mariadb-soname18
+embree
 filesystem
 gcompris-qt
 ipmctl
