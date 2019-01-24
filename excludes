@@ -70,3 +70,6 @@
 /usr/share/gitk/lib/msgs/ru.msg
 /usr/share/gitk/lib/msgs/sv.msg
 /usr/share/gitk/lib/msgs/vi.msg
+/usr/libexec/git-core/git-gui--askpass
+/usr/libexec/git-core/git-gui
+/usr/share/gitk/lib/msgs/pt_pt.msg

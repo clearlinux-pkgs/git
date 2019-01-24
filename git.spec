@@ -288,7 +288,7 @@ popd
 /usr/share/git-core/templates/hooks/pre-receive.sample
 /usr/share/git-core/templates/hooks/update.sample
 /usr/share/git-core/templates/info/exclude
-/usr/share/gitk/lib/msgs/pt_pt.msg
+%exclude /usr/share/gitk/lib/msgs/pt_pt.msg
 /usr/share/gitweb/static/git-favicon.png
 /usr/share/gitweb/static/git-logo.png
 /usr/share/gitweb/static/gitweb.css
@@ -397,8 +397,8 @@ popd
 /usr/libexec/git-core/git-gc
 /usr/libexec/git-core/git-get-tar-commit-id
 /usr/libexec/git-core/git-grep
-/usr/libexec/git-core/git-gui
-/usr/libexec/git-core/git-gui--askpass
+%exclude /usr/libexec/git-core/git-gui
+%exclude /usr/libexec/git-core/git-gui--askpass
 /usr/libexec/git-core/git-hash-object
 /usr/libexec/git-core/git-help
 /usr/libexec/git-core/git-http-backend
