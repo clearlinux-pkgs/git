@@ -19,14 +19,16 @@ embree
 filesystem
 gcompris-qt
 ipmctl
-keepassxc
+kdenlive
 kirigami2
 kmod
 krita
 mariadb
 messagelib
+mkl-dnn
 mraa
 mxnet
 openal-soft
 quassel
 upm
+wireshark
