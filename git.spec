@@ -4,10 +4,10 @@
 #
 Name     : git
 Version  : 2.21.0
-Release  : 145
+Release  : 146
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.21.0.tar.xz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.21.0.tar.xz
-Summary  : No detailed summary available
+Summary  : the fast distributed version control system
 Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause BSL-1.0 GPL-2.0 MIT
 Requires: git-bin = %{version}-%{release}
@@ -37,11 +37,13 @@ Patch1: 0001-Set-default-autocorrect-timeout-to-1.5-seconds.patch
 Patch2: 0002-Fix-expected-result-for-a-for-each-ref-test.patch
 
 %description
-Core GIT Tests
-==============
-This directory holds many test scripts for core GIT tools.  The
-first part of this short document describes how to run the tests
-and read their output.
+git-jump
+========
+Git-jump is a script for helping you jump to "interesting" parts of your
+project in your editor. It works by outputting a set of interesting
+spots in the "quickfix" format, which editors like vim can use as a
+queue of places to visit (this feature is usually used to jump to errors
+produced by a compiler). For example, given a diff like this:
 
 %package bin
 Summary: bin components for the git package.
@@ -116,8 +118,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1553541094
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export SOURCE_DATE_EPOCH=1554385404
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -143,7 +144,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} test
 
 %install
-export SOURCE_DATE_EPOCH=1553541094
+export SOURCE_DATE_EPOCH=1554385404
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/git
 cp COPYING %{buildroot}/usr/share/package-licenses/git/COPYING
@@ -160,6 +161,7 @@ popd
 %find_lang git
 ## install_append content
 install -D -m 00644 contrib/completion/git-completion.bash %{buildroot}/usr/share/bash-completion/completions/git
+install -D -m 00644 contrib/completion/git-prompt.sh %{buildroot}/usr/share/git-core/git-prompt.sh
 pushd Documentation
 make %{?_smp_mflags} man
 make DESTDIR=%{buildroot} install
@@ -279,6 +281,7 @@ popd
 %exclude /usr/share/perl5/Git/SVN/Ra.pm
 %exclude /usr/share/perl5/Git/SVN/Utils.pm
 /usr/share/bash-completion/completions/git
+/usr/share/git-core/git-prompt.sh
 /usr/share/git-core/templates/description
 /usr/share/git-core/templates/hooks/applypatch-msg.sample
 /usr/share/git-core/templates/hooks/commit-msg.sample

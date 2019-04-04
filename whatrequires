@@ -29,6 +29,7 @@ mkl-dnn
 mraa
 mxnet
 openal-soft
+opencl-clang
 quassel
 upm
 wireshark

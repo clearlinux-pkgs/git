@@ -1,4 +1,5 @@
 install -D -m 00644 contrib/completion/git-completion.bash %{buildroot}/usr/share/bash-completion/completions/git
+install -D -m 00644 contrib/completion/git-prompt.sh %{buildroot}/usr/share/git-core/git-prompt.sh
 pushd Documentation
 make %{?_smp_mflags} man
 make DESTDIR=%{buildroot} install
