@@ -23,6 +23,7 @@ kdenlive
 kirigami2
 kmod
 krita
+llvm
 mariadb
 messagelib
 mkl-dnn

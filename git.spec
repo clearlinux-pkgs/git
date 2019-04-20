@@ -118,7 +118,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1554385404
+export SOURCE_DATE_EPOCH=1555775533
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -144,7 +144,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} test
 
 %install
-export SOURCE_DATE_EPOCH=1554385404
+export SOURCE_DATE_EPOCH=1555775533
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/git
 cp COPYING %{buildroot}/usr/share/package-licenses/git/COPYING
