@@ -12,9 +12,12 @@ blender
 bro
 caffe
 ceph
+chrome-gnome-shell
 cmake
 cmocka
 compat-mariadb-soname18
+conda
+dldt
 embree
 filesystem
 gcompris-qt
@@ -32,5 +35,7 @@ mxnet
 openal-soft
 opencl-clang
 quassel
+supertuxkart
 upm
+volk
 wireshark

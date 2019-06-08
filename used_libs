@@ -4,6 +4,5 @@ libcurl.so.4
 libexpat.so.1
 libpcre2-8.so.0
 libpthread.so.0
-librt.so.1
 libssl.so.1.1
 libz.so.1
