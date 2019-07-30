@@ -4,10 +4,10 @@
 #
 Name     : git
 Version  : 2.22.0
-Release  : 148
+Release  : 149
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.22.0.tar.xz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.22.0.tar.xz
-Summary  : the fast distributed version control system
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause BSL-1.0 GPL-2.0 MIT
 Requires: git-bin = %{version}-%{release}
@@ -37,13 +37,11 @@ Patch1: 0001-Set-default-autocorrect-timeout-to-1.5-seconds.patch
 Patch2: 0002-Fix-expected-result-for-a-for-each-ref-test.patch
 
 %description
-git-jump
-========
-Git-jump is a script for helping you jump to "interesting" parts of your
-project in your editor. It works by outputting a set of interesting
-spots in the "quickfix" format, which editors like vim can use as a
-queue of places to visit (this feature is usually used to jump to errors
-produced by a compiler). For example, given a diff like this:
+Core GIT Tests
+==============
+This directory holds many test scripts for core GIT tools.  The
+first part of this short document describes how to run the tests
+and read their output.
 
 %package bin
 Summary: bin components for the git package.
@@ -117,8 +115,9 @@ popd
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1559955977
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1564462035
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -140,14 +139,14 @@ PYTHON=/usr/bin/python3
 make  %{?_smp_mflags}
 popd
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} test
 
 %install
-export SOURCE_DATE_EPOCH=1559955977
+export SOURCE_DATE_EPOCH=1564462035
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/git
 cp COPYING %{buildroot}/usr/share/package-licenses/git/COPYING
@@ -162,6 +161,80 @@ pushd ../buildavx2/
 popd
 %make_install
 %find_lang git
+## Remove excluded files
+rm -f %{buildroot}/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/Git/.packlist
+rm -f %{buildroot}/usr/bin/gitk
+rm -f %{buildroot}/usr/share/git-gui/lib/about.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/blame.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/branch.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/branch_checkout.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/branch_create.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/branch_delete.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/branch_rename.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/browser.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/checkout_op.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/choose_font.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/choose_repository.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/choose_rev.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/class.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/commit.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/console.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/database.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/date.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/diff.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/encoding.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/error.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/git-gui.ico
+rm -f %{buildroot}/usr/share/git-gui/lib/index.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/line.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/logo.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/merge.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/mergetool.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/msgs/bg.msg
+rm -f %{buildroot}/usr/share/git-gui/lib/msgs/de.msg
+rm -f %{buildroot}/usr/share/git-gui/lib/msgs/el.msg
+rm -f %{buildroot}/usr/share/git-gui/lib/msgs/fr.msg
+rm -f %{buildroot}/usr/share/git-gui/lib/msgs/hu.msg
+rm -f %{buildroot}/usr/share/git-gui/lib/msgs/it.msg
+rm -f %{buildroot}/usr/share/git-gui/lib/msgs/ja.msg
+rm -f %{buildroot}/usr/share/git-gui/lib/msgs/nb.msg
+rm -f %{buildroot}/usr/share/git-gui/lib/msgs/pt_br.msg
+rm -f %{buildroot}/usr/share/git-gui/lib/msgs/pt_pt.msg
+rm -f %{buildroot}/usr/share/git-gui/lib/msgs/ru.msg
+rm -f %{buildroot}/usr/share/git-gui/lib/msgs/sv.msg
+rm -f %{buildroot}/usr/share/git-gui/lib/msgs/vi.msg
+rm -f %{buildroot}/usr/share/git-gui/lib/msgs/zh_cn.msg
+rm -f %{buildroot}/usr/share/git-gui/lib/option.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/remote.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/remote_add.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/remote_branch_delete.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/search.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/shortcut.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/spellcheck.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/sshkey.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/status_bar.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/tclIndex
+rm -f %{buildroot}/usr/share/git-gui/lib/themed.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/tools.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/tools_dlg.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/transport.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/win32.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/win32_shortcut.js
+rm -f %{buildroot}/usr/share/gitk/lib/msgs/bg.msg
+rm -f %{buildroot}/usr/share/gitk/lib/msgs/ca.msg
+rm -f %{buildroot}/usr/share/gitk/lib/msgs/de.msg
+rm -f %{buildroot}/usr/share/gitk/lib/msgs/es.msg
+rm -f %{buildroot}/usr/share/gitk/lib/msgs/fr.msg
+rm -f %{buildroot}/usr/share/gitk/lib/msgs/hu.msg
+rm -f %{buildroot}/usr/share/gitk/lib/msgs/it.msg
+rm -f %{buildroot}/usr/share/gitk/lib/msgs/ja.msg
+rm -f %{buildroot}/usr/share/gitk/lib/msgs/pt_br.msg
+rm -f %{buildroot}/usr/share/gitk/lib/msgs/ru.msg
+rm -f %{buildroot}/usr/share/gitk/lib/msgs/sv.msg
+rm -f %{buildroot}/usr/share/gitk/lib/msgs/vi.msg
+rm -f %{buildroot}/usr/libexec/git-core/git-gui--askpass
+rm -f %{buildroot}/usr/libexec/git-core/git-gui
+rm -f %{buildroot}/usr/share/gitk/lib/msgs/pt_pt.msg
 ## install_append content
 install -D -m 00644 contrib/completion/git-completion.bash %{buildroot}/usr/share/bash-completion/completions/git
 install -D -m 00644 contrib/completion/git-prompt.sh %{buildroot}/usr/share/git-core/git-prompt.sh
@@ -176,8 +249,6 @@ popd
 
 %files bin
 %defattr(-,root,root,-)
-%exclude /usr/bin/git-cvsserver
-%exclude /usr/bin/gitk
 /usr/bin/git
 /usr/bin/git-receive-pack
 /usr/bin/git-shell
@@ -191,98 +262,6 @@ popd
 
 %files data
 %defattr(-,root,root,-)
-%exclude /usr/share/git-core/templates/hooks/fsmonitor-watchman.sample
-%exclude /usr/share/git-core/templates/hooks/pre-rebase.sample
-%exclude /usr/share/git-core/templates/hooks/prepare-commit-msg.sample
-%exclude /usr/share/git-gui/lib/about.tcl
-%exclude /usr/share/git-gui/lib/blame.tcl
-%exclude /usr/share/git-gui/lib/branch.tcl
-%exclude /usr/share/git-gui/lib/branch_checkout.tcl
-%exclude /usr/share/git-gui/lib/branch_create.tcl
-%exclude /usr/share/git-gui/lib/branch_delete.tcl
-%exclude /usr/share/git-gui/lib/branch_rename.tcl
-%exclude /usr/share/git-gui/lib/browser.tcl
-%exclude /usr/share/git-gui/lib/checkout_op.tcl
-%exclude /usr/share/git-gui/lib/choose_font.tcl
-%exclude /usr/share/git-gui/lib/choose_repository.tcl
-%exclude /usr/share/git-gui/lib/choose_rev.tcl
-%exclude /usr/share/git-gui/lib/class.tcl
-%exclude /usr/share/git-gui/lib/commit.tcl
-%exclude /usr/share/git-gui/lib/console.tcl
-%exclude /usr/share/git-gui/lib/database.tcl
-%exclude /usr/share/git-gui/lib/date.tcl
-%exclude /usr/share/git-gui/lib/diff.tcl
-%exclude /usr/share/git-gui/lib/encoding.tcl
-%exclude /usr/share/git-gui/lib/error.tcl
-%exclude /usr/share/git-gui/lib/git-gui.ico
-%exclude /usr/share/git-gui/lib/index.tcl
-%exclude /usr/share/git-gui/lib/line.tcl
-%exclude /usr/share/git-gui/lib/logo.tcl
-%exclude /usr/share/git-gui/lib/merge.tcl
-%exclude /usr/share/git-gui/lib/mergetool.tcl
-%exclude /usr/share/git-gui/lib/msgs/bg.msg
-%exclude /usr/share/git-gui/lib/msgs/de.msg
-%exclude /usr/share/git-gui/lib/msgs/el.msg
-%exclude /usr/share/git-gui/lib/msgs/fr.msg
-%exclude /usr/share/git-gui/lib/msgs/hu.msg
-%exclude /usr/share/git-gui/lib/msgs/it.msg
-%exclude /usr/share/git-gui/lib/msgs/ja.msg
-%exclude /usr/share/git-gui/lib/msgs/nb.msg
-%exclude /usr/share/git-gui/lib/msgs/pt_br.msg
-%exclude /usr/share/git-gui/lib/msgs/pt_pt.msg
-%exclude /usr/share/git-gui/lib/msgs/ru.msg
-%exclude /usr/share/git-gui/lib/msgs/sv.msg
-%exclude /usr/share/git-gui/lib/msgs/vi.msg
-%exclude /usr/share/git-gui/lib/msgs/zh_cn.msg
-%exclude /usr/share/git-gui/lib/option.tcl
-%exclude /usr/share/git-gui/lib/remote.tcl
-%exclude /usr/share/git-gui/lib/remote_add.tcl
-%exclude /usr/share/git-gui/lib/remote_branch_delete.tcl
-%exclude /usr/share/git-gui/lib/search.tcl
-%exclude /usr/share/git-gui/lib/shortcut.tcl
-%exclude /usr/share/git-gui/lib/spellcheck.tcl
-%exclude /usr/share/git-gui/lib/sshkey.tcl
-%exclude /usr/share/git-gui/lib/status_bar.tcl
-%exclude /usr/share/git-gui/lib/tclIndex
-%exclude /usr/share/git-gui/lib/themed.tcl
-%exclude /usr/share/git-gui/lib/tools.tcl
-%exclude /usr/share/git-gui/lib/tools_dlg.tcl
-%exclude /usr/share/git-gui/lib/transport.tcl
-%exclude /usr/share/git-gui/lib/win32.tcl
-%exclude /usr/share/git-gui/lib/win32_shortcut.js
-%exclude /usr/share/gitk/lib/msgs/bg.msg
-%exclude /usr/share/gitk/lib/msgs/ca.msg
-%exclude /usr/share/gitk/lib/msgs/de.msg
-%exclude /usr/share/gitk/lib/msgs/es.msg
-%exclude /usr/share/gitk/lib/msgs/fr.msg
-%exclude /usr/share/gitk/lib/msgs/hu.msg
-%exclude /usr/share/gitk/lib/msgs/it.msg
-%exclude /usr/share/gitk/lib/msgs/ja.msg
-%exclude /usr/share/gitk/lib/msgs/pt_br.msg
-%exclude /usr/share/gitk/lib/msgs/pt_pt.msg
-%exclude /usr/share/gitk/lib/msgs/ru.msg
-%exclude /usr/share/gitk/lib/msgs/sv.msg
-%exclude /usr/share/gitk/lib/msgs/vi.msg
-%exclude /usr/share/gitweb/gitweb.cgi
-%exclude /usr/share/perl5/FromCPAN/Error.pm
-%exclude /usr/share/perl5/FromCPAN/Mail/Address.pm
-%exclude /usr/share/perl5/Git.pm
-%exclude /usr/share/perl5/Git/I18N.pm
-%exclude /usr/share/perl5/Git/IndexInfo.pm
-%exclude /usr/share/perl5/Git/LoadCPAN.pm
-%exclude /usr/share/perl5/Git/LoadCPAN/Error.pm
-%exclude /usr/share/perl5/Git/LoadCPAN/Mail/Address.pm
-%exclude /usr/share/perl5/Git/Packet.pm
-%exclude /usr/share/perl5/Git/SVN.pm
-%exclude /usr/share/perl5/Git/SVN/Editor.pm
-%exclude /usr/share/perl5/Git/SVN/Fetcher.pm
-%exclude /usr/share/perl5/Git/SVN/GlobSpec.pm
-%exclude /usr/share/perl5/Git/SVN/Log.pm
-%exclude /usr/share/perl5/Git/SVN/Memoize/YAML.pm
-%exclude /usr/share/perl5/Git/SVN/Migration.pm
-%exclude /usr/share/perl5/Git/SVN/Prompt.pm
-%exclude /usr/share/perl5/Git/SVN/Ra.pm
-%exclude /usr/share/perl5/Git/SVN/Utils.pm
 /usr/share/bash-completion/completions/git
 /usr/share/git-core/git-prompt.sh
 /usr/share/git-core/templates/description
@@ -339,18 +318,6 @@ popd
 
 %files libexec
 %defattr(-,root,root,-)
-%exclude /usr/libexec/git-core/git-add--interactive
-%exclude /usr/libexec/git-core/git-archimport
-%exclude /usr/libexec/git-core/git-cvsexportcommit
-%exclude /usr/libexec/git-core/git-cvsimport
-%exclude /usr/libexec/git-core/git-cvsserver
-%exclude /usr/libexec/git-core/git-gui
-%exclude /usr/libexec/git-core/git-gui--askpass
-%exclude /usr/libexec/git-core/git-instaweb
-%exclude /usr/libexec/git-core/git-p4
-%exclude /usr/libexec/git-core/git-request-pull
-%exclude /usr/libexec/git-core/git-send-email
-%exclude /usr/libexec/git-core/git-svn
 /usr/libexec/git-core/git
 /usr/libexec/git-core/git-add
 /usr/libexec/git-core/git-am
