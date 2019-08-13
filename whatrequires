@@ -35,6 +35,7 @@ messagelib
 mkl-dnn
 mraa
 mxnet
+neovim
 openal-soft
 opencl-clang
 quassel
