@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.23.0
-Release  : 151
+Release  : 153
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.23.0.tar.xz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.23.0.tar.xz
 Summary  : the fast distributed version control system
@@ -37,13 +37,11 @@ Patch1: 0001-Set-default-autocorrect-timeout-to-1.5-seconds.patch
 Patch2: 0002-Fix-expected-result-for-a-for-each-ref-test.patch
 
 %description
-git-jump
-========
-Git-jump is a script for helping you jump to "interesting" parts of your
-project in your editor. It works by outputting a set of interesting
-spots in the "quickfix" format, which editors like vim can use as a
-queue of places to visit (this feature is usually used to jump to errors
-produced by a compiler). For example, given a diff like this:
+Core GIT Tests
+==============
+This directory holds many test scripts for core GIT tools.  The
+first part of this short document describes how to run the tests
+and read their output.
 
 %package bin
 Summary: bin components for the git package.
@@ -118,8 +116,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1565998966
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1567794277
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -149,7 +146,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} test
 
 %install
-export SOURCE_DATE_EPOCH=1565998966
+export SOURCE_DATE_EPOCH=1567794277
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/git
 cp COPYING %{buildroot}/usr/share/package-licenses/git/COPYING
@@ -241,10 +238,8 @@ rm -f %{buildroot}/usr/share/gitk/lib/msgs/pt_pt.msg
 ## install_append content
 install -D -m 00644 contrib/completion/git-completion.bash %{buildroot}/usr/share/bash-completion/completions/git
 install -D -m 00644 contrib/completion/git-prompt.sh %{buildroot}/usr/share/git-core/git-prompt.sh
-pushd Documentation
-make %{?_smp_mflags} man
-make DESTDIR=%{buildroot} install
-popd
+make -C Documentation DESTDIR=%{buildroot} %{?_smp_mflags} man install
+make -C contrib/subtree DESTDIR=%{buildroot} %{?_smp_mflags} install
 ## install_append end
 
 %files
@@ -294,6 +289,7 @@ popd
 /usr/libexec/git-core/git-p4
 /usr/libexec/git-core/git-request-pull
 /usr/libexec/git-core/git-send-email
+/usr/libexec/git-core/git-subtree
 /usr/libexec/git-core/git-svn
 /usr/share/git-core/templates/hooks/fsmonitor-watchman.sample
 /usr/share/git-core/templates/hooks/pre-rebase.sample
