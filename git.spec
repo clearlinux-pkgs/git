@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.23.0
-Release  : 153
+Release  : 154
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.23.0.tar.xz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.23.0.tar.xz
 Summary  : the fast distributed version control system
