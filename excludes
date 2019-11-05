@@ -73,3 +73,4 @@
 /usr/libexec/git-core/git-gui--askpass
 /usr/libexec/git-core/git-gui
 /usr/share/gitk/lib/msgs/pt_pt.msg
+/usr/share/gitk/lib/msgs/zh_cn.msg
