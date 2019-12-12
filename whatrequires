@@ -2,13 +2,13 @@
 CopyQ
 FreeRDP
 OpenColorIO
+ParaView
 R-git2r
 Remmina
 VTK
 Z3
 arpack-ng
 assimp
-atom
 bcc
 blender
 bro
@@ -26,6 +26,7 @@ flatpak-builder
 gcompris-qt
 ipmctl
 kdenlive
+kim-api
 kirigami2
 kmod
 koji
@@ -39,6 +40,7 @@ mraa
 mxnet
 neovim
 ngraph
+obs-studio
 openal-soft
 opencl-clang
 pyside2-setup
