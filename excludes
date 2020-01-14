@@ -14,6 +14,7 @@
 /usr/share/git-gui/lib/choose_font.tcl
 /usr/share/git-gui/lib/choose_repository.tcl
 /usr/share/git-gui/lib/choose_rev.tcl
+/usr/share/git-gui/lib/chord.tcl
 /usr/share/git-gui/lib/class.tcl
 /usr/share/git-gui/lib/commit.tcl
 /usr/share/git-gui/lib/console.tcl

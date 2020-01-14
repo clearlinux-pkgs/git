@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.25.0
-Release  : 157
+Release  : 158
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.25.0.tar.xz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.25.0.tar.xz
 Summary  : the fast distributed version control system
@@ -37,13 +37,11 @@ Patch1: 0001-Set-default-autocorrect-timeout-to-1.5-seconds.patch
 Patch2: 0002-Fix-expected-result-for-a-for-each-ref-test.patch
 
 %description
-git-jump
-========
-Git-jump is a script for helping you jump to "interesting" parts of your
-project in your editor. It works by outputting a set of interesting
-spots in the "quickfix" format, which editors like vim can use as a
-queue of places to visit (this feature is usually used to jump to errors
-produced by a compiler). For example, given a diff like this:
+Core GIT Tests
+==============
+This directory holds many test scripts for core GIT tools.  The
+first part of this short document describes how to run the tests
+and read their output.
 
 %package bin
 Summary: bin components for the git package.
@@ -119,8 +117,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1578966462
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1578971181
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -150,7 +147,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} test
 
 %install
-export SOURCE_DATE_EPOCH=1578966462
+export SOURCE_DATE_EPOCH=1578971181
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/git
 cp %{_builddir}/git-2.25.0/COPYING %{buildroot}/usr/share/package-licenses/git/3ee0019d4f4ea0a9d3f50800833f30dc14e2968e
@@ -180,6 +177,7 @@ rm -f %{buildroot}/usr/share/git-gui/lib/checkout_op.tcl
 rm -f %{buildroot}/usr/share/git-gui/lib/choose_font.tcl
 rm -f %{buildroot}/usr/share/git-gui/lib/choose_repository.tcl
 rm -f %{buildroot}/usr/share/git-gui/lib/choose_rev.tcl
+rm -f %{buildroot}/usr/share/git-gui/lib/chord.tcl
 rm -f %{buildroot}/usr/share/git-gui/lib/class.tcl
 rm -f %{buildroot}/usr/share/git-gui/lib/commit.tcl
 rm -f %{buildroot}/usr/share/git-gui/lib/console.tcl
@@ -278,7 +276,6 @@ make -C contrib/subtree DESTDIR=%{buildroot} %{?_smp_mflags} install
 /usr/share/git-core/templates/hooks/pre-receive.sample
 /usr/share/git-core/templates/hooks/update.sample
 /usr/share/git-core/templates/info/exclude
-/usr/share/git-gui/lib/chord.tcl
 /usr/share/gitweb/static/git-favicon.png
 /usr/share/gitweb/static/git-logo.png
 /usr/share/gitweb/static/gitweb.css
