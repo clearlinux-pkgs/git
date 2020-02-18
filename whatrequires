@@ -19,8 +19,10 @@ cmake
 cmocka
 compat-mariadb-soname18
 conda
+dino
 dldt
 embree
+fdm_materials
 filesystem
 flatpak-builder
 gcompris-qt
