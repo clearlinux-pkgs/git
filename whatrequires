@@ -21,6 +21,7 @@ compat-mariadb-soname18
 conda
 dino
 dldt
+dwarves
 embree
 fdm_materials
 filesystem
