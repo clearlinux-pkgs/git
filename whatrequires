@@ -27,6 +27,7 @@ fdm_materials
 filesystem
 flatpak-builder
 gcompris-qt
+gmsh
 ipmctl
 kdenlive
 kim-api
@@ -50,6 +51,5 @@ pyside2-setup
 quassel
 supertuxkart
 tensorflow-serving
-upm
 volk
 wireshark
