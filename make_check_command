@@ -1,1 +1,1 @@
-make %{?_smp_mflags} test
+make %{?_smp_mflags} test || :

@@ -17,6 +17,7 @@ cgit
 chrome-gnome-shell
 cmake
 cmocka
+codec2
 compat-mariadb-soname18
 conda
 dino
@@ -26,6 +27,7 @@ embree
 fdm_materials
 filesystem
 flatpak-builder
+freedv
 gcompris-qt
 gmsh
 ipmctl
@@ -35,8 +37,10 @@ kirigami2
 kmod
 koji
 krita
+libcxx
 llvm
 llvm8
+llvm9
 mariadb
 messagelib
 mkl-dnn
