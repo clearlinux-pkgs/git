@@ -1,7 +1,7 @@
-From fd935a1122888434f4505a30fad9fca81a96baf1 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Sat, 6 Aug 2016 21:02:00 +0000
-Subject: [PATCH 1/2] Set default autocorrect timeout to 1.5 seconds
+Subject: [PATCH] Set default autocorrect timeout to 1.5 seconds
 
 Signed-off-by: Patrick McCarty <patrick.mccarty@intel.com>
 ---
@@ -9,10 +9,10 @@ Signed-off-by: Patrick McCarty <patrick.mccarty@intel.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/help.c b/help.c
-index 520c908..7fed2b2 100644
+index 1de9c0d..1181a1c 100644
 --- a/help.c
 +++ b/help.c
-@@ -559,7 +559,7 @@ int is_in_cmdlist(struct cmdnames *c, const char *s)
+@@ -467,7 +467,7 @@ int is_in_cmdlist(struct cmdnames *c, const char *s)
  	return 0;
  }
  
@@ -21,6 +21,3 @@ index 520c908..7fed2b2 100644
  static struct cmdnames aliases;
  
  static int git_unknown_cmd_config(const char *var, const char *value, void *cb)
--- 
-2.20.1
-

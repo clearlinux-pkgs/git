@@ -1,7 +1,7 @@
-From b6630f723cf8f7696f30c277b65d74873a27e347 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Patrick McCarty <patrick.mccarty@intel.com>
 Date: Mon, 25 Mar 2019 11:41:35 -0700
-Subject: [PATCH 2/2] Fix expected result for a for-each-ref test
+Subject: [PATCH] Fix expected result for a for-each-ref test
 
 This particular test checks the on-disk size of a tag object, but the
 on-disk size is one byte larger in this case due to Clear Linux using a
@@ -13,18 +13,15 @@ Signed-off-by: Patrick McCarty <patrick.mccarty@intel.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/t/t6300-for-each-ref.sh b/t/t6300-for-each-ref.sh
-index 0ffd630..a69c13c 100755
+index da59fad..1c7c8d0 100755
 --- a/t/t6300-for-each-ref.sh
 +++ b/t/t6300-for-each-ref.sh
-@@ -126,7 +126,7 @@ test_atom tag upstream ''
+@@ -133,7 +133,7 @@ test_atom tag upstream ''
  test_atom tag push ''
  test_atom tag objecttype tag
- test_atom tag objectsize 154
--test_atom tag objectsize:disk 138
+ test_atom tag objectsize $((114 + hexlen))
+-test_atom tag objectsize:disk $disklen
 +test_atom tag objectsize:disk 139
- test_atom tag '*objectsize:disk' 138
- test_atom tag deltabase 0000000000000000000000000000000000000000
- test_atom tag '*deltabase' 0000000000000000000000000000000000000000
--- 
-2.20.1
-
+ test_atom tag '*objectsize:disk' $disklen
+ test_atom tag deltabase $ZERO_OID
+ test_atom tag '*deltabase' $ZERO_OID
