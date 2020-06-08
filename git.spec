@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.27.0
-Release  : 165
+Release  : 166
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.27.0.tar.xz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.27.0.tar.xz
 Summary  : the fast distributed version control system
@@ -117,7 +117,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1591641662
+export SOURCE_DATE_EPOCH=1591644130
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -146,10 +146,10 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make %{?_smp_mflags} test || :
+make %{?_smp_mflags} test
 
 %install
-export SOURCE_DATE_EPOCH=1591641662
+export SOURCE_DATE_EPOCH=1591644130
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/git
 cp %{_builddir}/git-2.27.0/COPYING %{buildroot}/usr/share/package-licenses/git/3ee0019d4f4ea0a9d3f50800833f30dc14e2968e
