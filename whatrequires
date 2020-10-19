@@ -20,7 +20,6 @@ cmocka
 codec2
 conda
 dino
-dldt
 dwarves
 embree
 fdm_materials
@@ -31,7 +30,6 @@ gcompris-qt
 gmsh
 ipmctl
 kdenlive
-kim-api
 kirigami2
 kmod
 koji
@@ -43,10 +41,8 @@ llvm9
 mariadb
 messagelib
 mkl-dnn
-mraa
 mxnet
 neovim
-ngraph
 obs-studio
 openal-soft
 opencl-clang
@@ -54,5 +50,4 @@ pyside2-setup
 quassel
 supertuxkart
 tensorflow-serving
-volk
 wireshark
