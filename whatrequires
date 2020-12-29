@@ -12,6 +12,7 @@ assimp
 bcc
 blender
 bro
+ccache
 ceph
 cgit
 chrome-gnome-shell
@@ -26,6 +27,7 @@ embree
 fdm_materials
 filesystem
 flatpak-builder
+fontforge
 freedv
 gcompris-qt
 gmsh

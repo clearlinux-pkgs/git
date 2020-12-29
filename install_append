@@ -2,3 +2,9 @@ install -D -m 00644 contrib/completion/git-completion.bash %{buildroot}/usr/shar
 install -D -m 00644 contrib/completion/git-prompt.sh %{buildroot}/usr/share/git-core/git-prompt.sh
 make -C Documentation DESTDIR=%{buildroot} %{?_smp_mflags} man install
 make -C contrib/subtree DESTDIR=%{buildroot} %{?_smp_mflags} install
+# Remove files packaged in 'git-gui' not removed via 'excludes' file.
+find %{buildroot}/usr/share/git-gui -delete
+find %{buildroot}/usr/share/gitk -delete
+# The 'make' commands above re-install these
+rm -f %{buildroot}/usr/share/man/man1/git-gui.1
+rm -f %{buildroot}/usr/share/man/man1/gitk.1
