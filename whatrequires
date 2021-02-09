@@ -5,6 +5,7 @@ OpenColorIO
 ParaView
 R-git2r
 Remmina
+SVT-AV1
 VTK
 Z3
 arpack-ng
@@ -52,5 +53,6 @@ opencl-clang
 pyside2-setup
 quassel
 supertuxkart
+synergy
 tensorflow-serving
 wireshark
