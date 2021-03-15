@@ -1,30 +1,30 @@
-Configure miss: if linker supports -R
-Configure miss: gnudiff
-Configure miss: gdiff
-Configure miss: old iconv()
-Configure miss: whether iconv omits bom for utf-16 and utf-32
-Configure miss: struct stat.st_mtimespec.tv_nsec
-Configure miss: whether snprintf() and/or vsnprintf() return bogus value
-Configure miss: libcharset.h usability
-Configure miss: libcharset.h presence
-Configure miss: libcharset.h
-Configure miss: locale_charset in -liconv
-Configure miss: locale_charset in -lcharset
+Configure miss: BSD sysctl
 Configure miss: BSD sysctl
 Configure miss: POSIX Threads with ''
-Configure miss: POSIX Threads with '-mt'
-Configure miss: if linker supports -R
-Configure miss: gnudiff
-Configure miss: gdiff
-Configure miss: old iconv()
-Configure miss: whether iconv omits bom for utf-16 and utf-32
-Configure miss: struct stat.st_mtimespec.tv_nsec
-Configure miss: whether snprintf() and/or vsnprintf() return bogus value
-Configure miss: libcharset.h usability
-Configure miss: libcharset.h presence
-Configure miss: libcharset.h
-Configure miss: locale_charset in -liconv
-Configure miss: locale_charset in -lcharset
-Configure miss: BSD sysctl
 Configure miss: POSIX Threads with ''
 Configure miss: POSIX Threads with '-mt'
+Configure miss: POSIX Threads with '-mt'
+Configure miss: gdiff
+Configure miss: gdiff
+Configure miss: gnudiff
+Configure miss: gnudiff
+Configure miss: if linker supports -R
+Configure miss: if linker supports -R
+Configure miss: libcharset.h
+Configure miss: libcharset.h
+Configure miss: libcharset.h presence
+Configure miss: libcharset.h presence
+Configure miss: libcharset.h usability
+Configure miss: libcharset.h usability
+Configure miss: locale_charset in -lcharset
+Configure miss: locale_charset in -lcharset
+Configure miss: locale_charset in -liconv
+Configure miss: locale_charset in -liconv
+Configure miss: old iconv()
+Configure miss: old iconv()
+Configure miss: struct stat.st_mtimespec.tv_nsec
+Configure miss: struct stat.st_mtimespec.tv_nsec
+Configure miss: whether iconv omits bom for utf-16 and utf-32
+Configure miss: whether iconv omits bom for utf-16 and utf-32
+Configure miss: whether snprintf() and/or vsnprintf() return bogus value
+Configure miss: whether snprintf() and/or vsnprintf() return bogus value
