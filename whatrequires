@@ -33,6 +33,7 @@ freedv
 gcompris-qt
 gmsh
 ipmctl
+js8call
 kdenlive
 kirigami2
 kmod
@@ -40,6 +41,7 @@ koji
 krita
 libcxx
 llvm
+llvm10
 llvm8
 llvm9
 mariadb

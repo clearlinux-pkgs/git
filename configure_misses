@@ -8,8 +8,6 @@ Configure miss: gdiff
 Configure miss: gdiff
 Configure miss: gnudiff
 Configure miss: gnudiff
-Configure miss: if linker supports -R
-Configure miss: if linker supports -R
 Configure miss: libcharset.h
 Configure miss: libcharset.h
 Configure miss: libcharset.h presence
