@@ -1,6 +1,7 @@
 # This file contains recursive sources that require this package
 CopyQ
 FreeRDP
+LPCNet
 OpenColorIO
 ParaView
 R-git2r
@@ -12,7 +13,6 @@ arpack-ng
 assimp
 bcc
 blender
-bro
 ccache
 ceph
 cgit
@@ -23,6 +23,8 @@ codec2
 conda
 dino
 direwolf
+dnf
+dnf-plugins-core
 dwarves
 embree
 fdm_materials
@@ -36,10 +38,12 @@ ipmctl
 js8call
 kdenlive
 kirigami2
+kleopatra
 kmod
 koji
 krita
 libcxx
+libdnf
 llvm
 llvm10
 llvm8
@@ -54,6 +58,8 @@ openal-soft
 opencl-clang
 pyside2-setup
 quassel
+setuptools_scm
+sundials
 supertuxkart
 synergy
 tensorflow-serving

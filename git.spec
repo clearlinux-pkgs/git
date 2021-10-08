@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.33.0
-Release  : 181
+Release  : 182
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.33.0.tar.xz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.33.0.tar.xz
 Summary  : the fast distributed version control system
@@ -12,6 +12,7 @@ Group    : Development/Tools
 License  : Apache-2.0 BSL-1.0 GPL-2.0 MIT
 Requires: git-bin = %{version}-%{release}
 Requires: git-data = %{version}-%{release}
+Requires: git-filemap = %{version}-%{release}
 Requires: git-libexec = %{version}-%{release}
 Requires: git-license = %{version}-%{release}
 Requires: git-locales = %{version}-%{release}
@@ -50,6 +51,7 @@ Group: Binaries
 Requires: git-data = %{version}-%{release}
 Requires: git-libexec = %{version}-%{release}
 Requires: git-license = %{version}-%{release}
+Requires: git-filemap = %{version}-%{release}
 
 %description bin
 bin components for the git package.
@@ -71,10 +73,19 @@ Group: Default
 extras components for the git package.
 
 
+%package filemap
+Summary: filemap components for the git package.
+Group: Default
+
+%description filemap
+filemap components for the git package.
+
+
 %package libexec
 Summary: libexec components for the git package.
 Group: Default
 Requires: git-license = %{version}-%{release}
+Requires: git-filemap = %{version}-%{release}
 
 %description libexec
 libexec components for the git package.
@@ -118,7 +129,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1629158051
+export SOURCE_DATE_EPOCH=1633731944
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -127,18 +138,22 @@ export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=a
 export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
 export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
 export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
-%configure --disable-static --with-expat --with-libpcre --with-curl \
+%configure --disable-static --with-expat \
+--with-libpcre \
+--with-curl \
 PYTHON=/usr/bin/python3
 make  %{?_smp_mflags}
 
 unset PKG_CONFIG_PATH
 pushd ../buildavx2/
-export CFLAGS="$CFLAGS -m64 -march=haswell"
-export CXXFLAGS="$CXXFLAGS -m64 -march=haswell"
-export FFLAGS="$FFLAGS -m64 -march=haswell"
-export FCFLAGS="$FCFLAGS -m64 -march=haswell"
-export LDFLAGS="$LDFLAGS -m64 -march=haswell"
-%configure --disable-static --with-expat --with-libpcre --with-curl \
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3"
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3"
+export FFLAGS="$FFLAGS -m64 -march=x86-64-v3"
+export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3"
+export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3"
+%configure --disable-static --with-expat \
+--with-libpcre \
+--with-curl \
 PYTHON=/usr/bin/python3
 make  %{?_smp_mflags}
 popd
@@ -150,7 +165,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} test
 
 %install
-export SOURCE_DATE_EPOCH=1629158051
+export SOURCE_DATE_EPOCH=1633731944
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/git
 cp %{_builddir}/git-2.33.0/COPYING %{buildroot}/usr/share/package-licenses/git/3ee0019d4f4ea0a9d3f50800833f30dc14e2968e
@@ -160,7 +175,8 @@ cp %{_builddir}/git-2.33.0/contrib/subtree/COPYING %{buildroot}/usr/share/packag
 cp %{_builddir}/git-2.33.0/sha1dc/LICENSE.txt %{buildroot}/usr/share/package-licenses/git/f0197ae0a546d825bcd59ba21034f36272080a4a
 cp %{_builddir}/git-2.33.0/t/lib-diff/COPYING %{buildroot}/usr/share/package-licenses/git/2444921d595953ac768e3fb0c8ed97e62a45dc38
 pushd ../buildavx2/
-%make_install_avx2
+%make_install_v3
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 popd
 %make_install
 %find_lang git
@@ -194,11 +210,7 @@ rm -f %{buildroot}/usr/share/man/man1/gitk.1
 /usr/bin/git-shell
 /usr/bin/git-upload-archive
 /usr/bin/git-upload-pack
-/usr/bin/haswell/git
-/usr/bin/haswell/git-receive-pack
-/usr/bin/haswell/git-shell
-/usr/bin/haswell/git-upload-archive
-/usr/bin/haswell/git-upload-pack
+/usr/share/clear/optimized-elf/bin*
 
 %files data
 %defattr(-,root,root,-)
@@ -258,6 +270,10 @@ rm -f %{buildroot}/usr/share/man/man1/gitk.1
 /usr/share/perl5/Git/SVN/Prompt.pm
 /usr/share/perl5/Git/SVN/Ra.pm
 /usr/share/perl5/Git/SVN/Utils.pm
+
+%files filemap
+%defattr(-,root,root,-)
+/usr/share/clear/filemap/filemap-git
 
 %files libexec
 %defattr(-,root,root,-)
@@ -444,6 +460,7 @@ rm -f %{buildroot}/usr/share/man/man1/gitk.1
 /usr/libexec/git-core/mergetools/vimdiff
 /usr/libexec/git-core/mergetools/winmerge
 /usr/libexec/git-core/mergetools/xxdiff
+/usr/share/clear/optimized-elf/exec*
 
 %files license
 %defattr(0644,root,root,0755)
