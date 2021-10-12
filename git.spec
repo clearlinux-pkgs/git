@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.33.0
-Release  : 184
+Release  : 185
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.33.0.tar.xz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.33.0.tar.xz
 Summary  : the fast distributed version control system
@@ -129,15 +129,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1633751544
+export SOURCE_DATE_EPOCH=1634079405
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
-export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
-export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
-export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
+export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
+export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
+export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
+export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
 %configure --disable-static --with-expat \
 --with-libpcre \
 --with-curl \
@@ -165,7 +165,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} test
 
 %install
-export SOURCE_DATE_EPOCH=1633751544
+export SOURCE_DATE_EPOCH=1634079405
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/git
 cp %{_builddir}/git-2.33.0/COPYING %{buildroot}/usr/share/package-licenses/git/3ee0019d4f4ea0a9d3f50800833f30dc14e2968e
@@ -176,17 +176,16 @@ cp %{_builddir}/git-2.33.0/sha1dc/LICENSE.txt %{buildroot}/usr/share/package-lic
 cp %{_builddir}/git-2.33.0/t/lib-diff/COPYING %{buildroot}/usr/share/package-licenses/git/2444921d595953ac768e3fb0c8ed97e62a45dc38
 pushd ../buildavx2/
 %make_install_v3
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 popd
 %make_install
 %find_lang git
 ## Remove excluded files
-rm -f %{buildroot}/usr/bin/gitk
-rm -f %{buildroot}/usr/lib/perl5/site_perl/*/x86_64-linux-thread-multi/auto/Git/.packlist
-rm -f %{buildroot}/usr/libexec/git-core/git-gui
-rm -f %{buildroot}/usr/libexec/git-core/git-gui--askpass
-rm -f %{buildroot}/usr/share/man/man1/git-gui.1
-rm -f %{buildroot}/usr/share/man/man1/gitk.1
+rm -f %{buildroot}*/usr/bin/gitk
+rm -f %{buildroot}*/usr/lib/perl5/site_perl/*/x86_64-linux-thread-multi/auto/Git/.packlist
+rm -f %{buildroot}*/usr/libexec/git-core/git-gui
+rm -f %{buildroot}*/usr/libexec/git-core/git-gui--askpass
+rm -f %{buildroot}*/usr/share/man/man1/git-gui.1
+rm -f %{buildroot}*/usr/share/man/man1/gitk.1
 ## install_append content
 install -D -m 00644 contrib/completion/git-completion.bash %{buildroot}/usr/share/bash-completion/completions/git
 install -D -m 00644 contrib/completion/git-prompt.sh %{buildroot}/usr/share/git-core/git-prompt.sh
@@ -199,6 +198,7 @@ find %{buildroot}/usr/share/gitk -delete
 rm -f %{buildroot}/usr/share/man/man1/git-gui.1
 rm -f %{buildroot}/usr/share/man/man1/gitk.1
 ## install_append end
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
