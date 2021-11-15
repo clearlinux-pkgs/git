@@ -57,10 +57,10 @@ obs-studio
 openal-soft
 opencl-clang
 pyside2-setup
+qt6base
 quassel
 setuptools_scm
 sundials
 supertuxkart
 synergy
-tensorflow-serving
 wireshark
