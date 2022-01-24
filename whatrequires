@@ -6,6 +6,7 @@ OpenColorIO
 ParaView
 R-git2r
 Remmina
+SPIRV-Cross
 SVT-AV1
 VTK
 Z3
@@ -20,7 +21,6 @@ chrome-gnome-shell
 cmake
 cmocka
 codec2
-conda
 dino
 direwolf
 dnf
@@ -29,7 +29,6 @@ dwarves
 embree
 fdm_materials
 filesystem
-flatpak-builder
 fontforge
 freedv
 gcompris-qt
@@ -40,7 +39,6 @@ kdenlive
 kirigami2
 kleopatra
 kmod
-koji
 krita
 libcxx
 libdnf
@@ -51,15 +49,14 @@ llvm9
 mariadb
 messagelib
 mkl-dnn
-mxnet
 neovim
 obs-studio
 openal-soft
 opencl-clang
+pypi-setuptools_scm
 pyside2-setup
 qt6base
 quassel
-setuptools_scm
 sundials
 supertuxkart
 synergy
