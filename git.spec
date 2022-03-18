@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.35.1
-Release  : 193
+Release  : 194
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.35.1.tar.xz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.35.1.tar.xz
 Summary  : the fast distributed version control system
@@ -19,7 +19,6 @@ Requires: git-locales = %{version}-%{release}
 Requires: git-man = %{version}-%{release}
 BuildRequires : asciidoc
 BuildRequires : buildreq-cmake
-BuildRequires : buildreq-golang
 BuildRequires : curl-dev
 BuildRequires : docbook-xml
 BuildRequires : expat-dev
@@ -129,7 +128,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1643481231
+export SOURCE_DATE_EPOCH=1647637200
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -165,7 +164,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} test || :
 
 %install
-export SOURCE_DATE_EPOCH=1643481231
+export SOURCE_DATE_EPOCH=1647637200
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/git
 cp %{_builddir}/git-2.35.1/COPYING %{buildroot}/usr/share/package-licenses/git/3ee0019d4f4ea0a9d3f50800833f30dc14e2968e
