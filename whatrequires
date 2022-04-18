@@ -42,6 +42,7 @@ kmod
 krita
 libcxx
 libdnf
+libgit2
 llvm
 llvm11
 llvm12
