@@ -40,12 +40,14 @@ kirigami2
 kleopatra
 kmod
 krita
+level-zero
 libcxx
 libdnf
 libgit2
 llvm
 llvm11
 llvm12
+llvm13
 mariadb
 messagelib
 mkl-dnn
