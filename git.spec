@@ -4,7 +4,7 @@
 #
 Name     : git
 Version  : 2.37.2
-Release  : 205
+Release  : 206
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.37.2.tar.xz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.37.2.tar.xz
 Summary  : the fast distributed version control system
