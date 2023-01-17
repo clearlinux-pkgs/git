@@ -17,6 +17,7 @@ blender
 ccache
 ceph
 cgit
+clamav
 cmake
 cmocka
 codec2
