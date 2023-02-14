@@ -10,7 +10,6 @@ SPIRV-Cross
 SVT-AV1
 VTK
 Z3
-arpack-ng
 assimp
 bcc
 blender
@@ -65,3 +64,4 @@ sundials
 supertuxkart
 synergy
 wireshark
+xfce4-whiskermenu-plugin
