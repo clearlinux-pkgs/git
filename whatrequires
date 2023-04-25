@@ -26,6 +26,7 @@ dnf
 dnf-plugins-core
 dwarves
 embree
+falcosecurity-libs
 fdm_materials
 filesystem
 fontforge
@@ -46,15 +47,16 @@ libgit2
 llvm
 llvm11
 llvm12
-llvm13
 llvm14
+llvm15
 mariadb
 messagelib
 mkl-dnn
+mumble
 neovim
 obs-studio
 openal-soft
-opencl-clang
+poco
 pypi-setuptools_scm
 pyside2-setup
 qt6base
