@@ -5,7 +5,7 @@
 #
 Name     : git
 Version  : 2.40.1
-Release  : 217
+Release  : 218
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.40.1.tar.xz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.40.1.tar.xz
 Summary  : the fast distributed version control system
@@ -13,7 +13,6 @@ Group    : Development/Tools
 License  : Apache-2.0 BSD-3-Clause BSL-1.0 GPL-2.0 MIT
 Requires: git-bin = %{version}-%{release}
 Requires: git-data = %{version}-%{release}
-Requires: git-filemap = %{version}-%{release}
 Requires: git-libexec = %{version}-%{release}
 Requires: git-license = %{version}-%{release}
 Requires: git-locales = %{version}-%{release}
@@ -54,7 +53,6 @@ Group: Binaries
 Requires: git-data = %{version}-%{release}
 Requires: git-libexec = %{version}-%{release}
 Requires: git-license = %{version}-%{release}
-Requires: git-filemap = %{version}-%{release}
 
 %description bin
 bin components for the git package.
@@ -76,19 +74,10 @@ Group: Default
 extras components for the git package.
 
 
-%package filemap
-Summary: filemap components for the git package.
-Group: Default
-
-%description filemap
-filemap components for the git package.
-
-
 %package libexec
 Summary: libexec components for the git package.
 Group: Default
 Requires: git-license = %{version}-%{release}
-Requires: git-filemap = %{version}-%{release}
 
 %description libexec
 libexec components for the git package.
@@ -132,15 +121,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682444686
+export SOURCE_DATE_EPOCH=1682968319
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 %configure --disable-static --with-expat \
 --with-libpcre \
 --with-curl \
@@ -168,7 +157,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} test || :
 
 %install
-export SOURCE_DATE_EPOCH=1682444686
+export SOURCE_DATE_EPOCH=1682968319
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/git
 cp %{_builddir}/git-%{version}/COPYING %{buildroot}/usr/share/package-licenses/git/3ee0019d4f4ea0a9d3f50800833f30dc14e2968e || :
@@ -208,13 +197,18 @@ rm -f %{buildroot}/usr/share/man/man1/gitk.1
 
 %files bin
 %defattr(-,root,root,-)
+/V3/usr/bin/git
+/V3/usr/bin/git-receive-pack
+/V3/usr/bin/git-shell
+/V3/usr/bin/git-upload-archive
+/V3/usr/bin/git-upload-pack
+/V3/usr/bin/scalar
 /usr/bin/git
 /usr/bin/git-receive-pack
 /usr/bin/git-shell
 /usr/bin/git-upload-archive
 /usr/bin/git-upload-pack
 /usr/bin/scalar
-/usr/share/clear/optimized-elf/bin*
 
 %files data
 %defattr(-,root,root,-)
@@ -274,12 +268,157 @@ rm -f %{buildroot}/usr/share/man/man1/gitk.1
 /usr/share/perl5/Git/SVN/Ra.pm
 /usr/share/perl5/Git/SVN/Utils.pm
 
-%files filemap
-%defattr(-,root,root,-)
-/usr/share/clear/filemap/filemap-git
-
 %files libexec
 %defattr(-,root,root,-)
+/V3/usr/libexec/git-core/git
+/V3/usr/libexec/git-core/git-add
+/V3/usr/libexec/git-core/git-am
+/V3/usr/libexec/git-core/git-annotate
+/V3/usr/libexec/git-core/git-apply
+/V3/usr/libexec/git-core/git-archive
+/V3/usr/libexec/git-core/git-bisect
+/V3/usr/libexec/git-core/git-blame
+/V3/usr/libexec/git-core/git-branch
+/V3/usr/libexec/git-core/git-bugreport
+/V3/usr/libexec/git-core/git-bundle
+/V3/usr/libexec/git-core/git-cat-file
+/V3/usr/libexec/git-core/git-check-attr
+/V3/usr/libexec/git-core/git-check-ignore
+/V3/usr/libexec/git-core/git-check-mailmap
+/V3/usr/libexec/git-core/git-check-ref-format
+/V3/usr/libexec/git-core/git-checkout
+/V3/usr/libexec/git-core/git-checkout--worker
+/V3/usr/libexec/git-core/git-checkout-index
+/V3/usr/libexec/git-core/git-cherry
+/V3/usr/libexec/git-core/git-cherry-pick
+/V3/usr/libexec/git-core/git-clean
+/V3/usr/libexec/git-core/git-clone
+/V3/usr/libexec/git-core/git-column
+/V3/usr/libexec/git-core/git-commit
+/V3/usr/libexec/git-core/git-commit-graph
+/V3/usr/libexec/git-core/git-commit-tree
+/V3/usr/libexec/git-core/git-config
+/V3/usr/libexec/git-core/git-count-objects
+/V3/usr/libexec/git-core/git-credential
+/V3/usr/libexec/git-core/git-credential-cache
+/V3/usr/libexec/git-core/git-credential-cache--daemon
+/V3/usr/libexec/git-core/git-credential-store
+/V3/usr/libexec/git-core/git-daemon
+/V3/usr/libexec/git-core/git-describe
+/V3/usr/libexec/git-core/git-diagnose
+/V3/usr/libexec/git-core/git-diff
+/V3/usr/libexec/git-core/git-diff-files
+/V3/usr/libexec/git-core/git-diff-index
+/V3/usr/libexec/git-core/git-diff-tree
+/V3/usr/libexec/git-core/git-difftool
+/V3/usr/libexec/git-core/git-fast-export
+/V3/usr/libexec/git-core/git-fast-import
+/V3/usr/libexec/git-core/git-fetch
+/V3/usr/libexec/git-core/git-fetch-pack
+/V3/usr/libexec/git-core/git-fmt-merge-msg
+/V3/usr/libexec/git-core/git-for-each-ref
+/V3/usr/libexec/git-core/git-for-each-repo
+/V3/usr/libexec/git-core/git-format-patch
+/V3/usr/libexec/git-core/git-fsck
+/V3/usr/libexec/git-core/git-fsck-objects
+/V3/usr/libexec/git-core/git-fsmonitor--daemon
+/V3/usr/libexec/git-core/git-gc
+/V3/usr/libexec/git-core/git-get-tar-commit-id
+/V3/usr/libexec/git-core/git-grep
+/V3/usr/libexec/git-core/git-hash-object
+/V3/usr/libexec/git-core/git-help
+/V3/usr/libexec/git-core/git-hook
+/V3/usr/libexec/git-core/git-http-backend
+/V3/usr/libexec/git-core/git-http-fetch
+/V3/usr/libexec/git-core/git-http-push
+/V3/usr/libexec/git-core/git-imap-send
+/V3/usr/libexec/git-core/git-index-pack
+/V3/usr/libexec/git-core/git-init
+/V3/usr/libexec/git-core/git-init-db
+/V3/usr/libexec/git-core/git-interpret-trailers
+/V3/usr/libexec/git-core/git-log
+/V3/usr/libexec/git-core/git-ls-files
+/V3/usr/libexec/git-core/git-ls-remote
+/V3/usr/libexec/git-core/git-ls-tree
+/V3/usr/libexec/git-core/git-mailinfo
+/V3/usr/libexec/git-core/git-mailsplit
+/V3/usr/libexec/git-core/git-maintenance
+/V3/usr/libexec/git-core/git-merge
+/V3/usr/libexec/git-core/git-merge-base
+/V3/usr/libexec/git-core/git-merge-file
+/V3/usr/libexec/git-core/git-merge-index
+/V3/usr/libexec/git-core/git-merge-ours
+/V3/usr/libexec/git-core/git-merge-recursive
+/V3/usr/libexec/git-core/git-merge-subtree
+/V3/usr/libexec/git-core/git-merge-tree
+/V3/usr/libexec/git-core/git-mktag
+/V3/usr/libexec/git-core/git-mktree
+/V3/usr/libexec/git-core/git-multi-pack-index
+/V3/usr/libexec/git-core/git-mv
+/V3/usr/libexec/git-core/git-name-rev
+/V3/usr/libexec/git-core/git-notes
+/V3/usr/libexec/git-core/git-pack-objects
+/V3/usr/libexec/git-core/git-pack-redundant
+/V3/usr/libexec/git-core/git-pack-refs
+/V3/usr/libexec/git-core/git-patch-id
+/V3/usr/libexec/git-core/git-prune
+/V3/usr/libexec/git-core/git-prune-packed
+/V3/usr/libexec/git-core/git-pull
+/V3/usr/libexec/git-core/git-push
+/V3/usr/libexec/git-core/git-range-diff
+/V3/usr/libexec/git-core/git-read-tree
+/V3/usr/libexec/git-core/git-rebase
+/V3/usr/libexec/git-core/git-receive-pack
+/V3/usr/libexec/git-core/git-reflog
+/V3/usr/libexec/git-core/git-remote
+/V3/usr/libexec/git-core/git-remote-ext
+/V3/usr/libexec/git-core/git-remote-fd
+/V3/usr/libexec/git-core/git-remote-ftp
+/V3/usr/libexec/git-core/git-remote-ftps
+/V3/usr/libexec/git-core/git-remote-http
+/V3/usr/libexec/git-core/git-remote-https
+/V3/usr/libexec/git-core/git-repack
+/V3/usr/libexec/git-core/git-replace
+/V3/usr/libexec/git-core/git-rerere
+/V3/usr/libexec/git-core/git-reset
+/V3/usr/libexec/git-core/git-restore
+/V3/usr/libexec/git-core/git-rev-list
+/V3/usr/libexec/git-core/git-rev-parse
+/V3/usr/libexec/git-core/git-revert
+/V3/usr/libexec/git-core/git-rm
+/V3/usr/libexec/git-core/git-send-pack
+/V3/usr/libexec/git-core/git-sh-i18n--envsubst
+/V3/usr/libexec/git-core/git-shell
+/V3/usr/libexec/git-core/git-shortlog
+/V3/usr/libexec/git-core/git-show
+/V3/usr/libexec/git-core/git-show-branch
+/V3/usr/libexec/git-core/git-show-index
+/V3/usr/libexec/git-core/git-show-ref
+/V3/usr/libexec/git-core/git-sparse-checkout
+/V3/usr/libexec/git-core/git-stage
+/V3/usr/libexec/git-core/git-stash
+/V3/usr/libexec/git-core/git-status
+/V3/usr/libexec/git-core/git-stripspace
+/V3/usr/libexec/git-core/git-submodule--helper
+/V3/usr/libexec/git-core/git-switch
+/V3/usr/libexec/git-core/git-symbolic-ref
+/V3/usr/libexec/git-core/git-tag
+/V3/usr/libexec/git-core/git-unpack-file
+/V3/usr/libexec/git-core/git-unpack-objects
+/V3/usr/libexec/git-core/git-update-index
+/V3/usr/libexec/git-core/git-update-ref
+/V3/usr/libexec/git-core/git-update-server-info
+/V3/usr/libexec/git-core/git-upload-archive
+/V3/usr/libexec/git-core/git-upload-pack
+/V3/usr/libexec/git-core/git-var
+/V3/usr/libexec/git-core/git-verify-commit
+/V3/usr/libexec/git-core/git-verify-pack
+/V3/usr/libexec/git-core/git-verify-tag
+/V3/usr/libexec/git-core/git-version
+/V3/usr/libexec/git-core/git-whatchanged
+/V3/usr/libexec/git-core/git-worktree
+/V3/usr/libexec/git-core/git-write-tree
+/V3/usr/libexec/git-core/scalar
 /usr/libexec/git-core/git
 /usr/libexec/git-core/git-add
 /usr/libexec/git-core/git-am
@@ -465,7 +604,6 @@ rm -f %{buildroot}/usr/share/man/man1/gitk.1
 /usr/libexec/git-core/mergetools/winmerge
 /usr/libexec/git-core/mergetools/xxdiff
 /usr/libexec/git-core/scalar
-/usr/share/clear/optimized-elf/exec*
 
 %files license
 %defattr(0644,root,root,0755)
