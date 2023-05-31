@@ -3,7 +3,6 @@ CopyQ
 FreeRDP
 LPCNet
 OpenColorIO
-ParaView
 R-git2r
 Remmina
 SPIRV-Cross
@@ -20,6 +19,7 @@ clamav
 cmake
 cmocka
 codec2
+compat-codec2-soname1
 dino
 direwolf
 dnf
@@ -27,11 +27,11 @@ dnf-plugins-core
 dwarves
 embree
 falcosecurity-libs
-fdm_materials
 filesystem
 fontforge
 freedv
 gcompris-qt
+gdal
 gmsh
 ipmctl
 js8call
@@ -59,7 +59,6 @@ openal-soft
 poco
 pypi-setuptools_scm
 pyside2-setup
-qt6base
 quassel
 stellarium
 sundials
