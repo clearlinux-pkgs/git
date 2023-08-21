@@ -1,8 +1,10 @@
 # This file contains recursive sources that require this package
+CalcMySky
 CopyQ
 FreeRDP
 LPCNet
 OpenColorIO
+PDAL
 R-git2r
 Remmina
 SPIRV-Cross
@@ -13,7 +15,6 @@ assimp
 bcc
 blender
 ccache
-ceph
 cgit
 clamav
 cmake
@@ -39,14 +40,11 @@ kdenlive
 kirigami2
 kleopatra
 kmod
-krita
 level-zero
 libcxx
 libdnf
 libgit2
 llvm
-llvm11
-llvm12
 llvm14
 llvm15
 mariadb

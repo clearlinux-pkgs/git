@@ -4,10 +4,10 @@
 # Using build pattern: configure
 #
 Name     : git
-Version  : 2.41.0
-Release  : 221
-URL      : https://www.kernel.org/pub/software/scm/git/git-2.41.0.tar.xz
-Source0  : https://www.kernel.org/pub/software/scm/git/git-2.41.0.tar.xz
+Version  : 2.42.0
+Release  : 222
+URL      : https://www.kernel.org/pub/software/scm/git/git-2.42.0.tar.xz
+Source0  : https://www.kernel.org/pub/software/scm/git/git-2.42.0.tar.xz
 Summary  : the fast distributed version control system
 Group    : Development/Tools
 License  : Apache-2.0 BSD-3-Clause BSL-1.0 GPL-2.0 MIT
@@ -108,12 +108,12 @@ man components for the git package.
 
 
 %prep
-%setup -q -n git-2.41.0
-cd %{_builddir}/git-2.41.0
-%patch1 -p1
-%patch2 -p1
+%setup -q -n git-2.42.0
+cd %{_builddir}/git-2.42.0
+%patch -P 1 -p1
+%patch -P 2 -p1
 pushd ..
-cp -a git-2.41.0 buildavx2
+cp -a git-2.42.0 buildavx2
 popd
 
 %build
@@ -121,7 +121,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1685630974
+export SOURCE_DATE_EPOCH=1692650666
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -157,7 +157,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} test || :
 
 %install
-export SOURCE_DATE_EPOCH=1685630974
+export SOURCE_DATE_EPOCH=1692650666
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/git
 cp %{_builddir}/git-%{version}/COPYING %{buildroot}/usr/share/package-licenses/git/3ee0019d4f4ea0a9d3f50800833f30dc14e2968e || :
