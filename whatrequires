@@ -13,7 +13,7 @@ VTK
 Z3
 assimp
 bcc
-blender
+bemenu
 ccache
 cgit
 clamav
@@ -41,6 +41,7 @@ kirigami2
 kleopatra
 kmod
 level-zero
+libaom
 libcxx
 libdnf
 libgit2
@@ -52,15 +53,16 @@ messagelib
 mkl-dnn
 mumble
 neovim
-obs-studio
 openal-soft
 poco
 pypi-setuptools_scm
-pyside2-setup
+qt63d
+qt6webengine
 quassel
 stellarium
 sundials
 supertuxkart
 synergy
 wireshark
+x265
 xfce4-whiskermenu-plugin
