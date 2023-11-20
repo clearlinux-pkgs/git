@@ -48,6 +48,7 @@ libgit2
 llvm
 llvm14
 llvm15
+llvm16
 mariadb
 messagelib
 mkl-dnn
