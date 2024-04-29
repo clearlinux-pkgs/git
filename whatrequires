@@ -30,6 +30,7 @@ dnf-plugins-core
 dpcpp-compiler
 dwarves
 embree
+extra-cmake-modules
 falcosecurity-libs
 filesystem
 fontforge
@@ -40,6 +41,7 @@ gmsh
 ipmctl
 js8call
 kdenlive
+kirigami
 kirigami2
 kleopatra
 kmod
@@ -58,6 +60,7 @@ mkl-dnn
 mumble
 neovim
 openal-soft
+opencl-clang
 poco
 pypi-setuptools_scm
 qt6webengine
@@ -69,3 +72,4 @@ synergy
 wireshark
 x265
 xfce4-whiskermenu-plugin
+znc
