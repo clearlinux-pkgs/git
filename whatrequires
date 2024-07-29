@@ -4,6 +4,7 @@ CopyQ
 FreeRDP
 FreeRDP2
 LPCNet
+MuseScore
 OpenColorIO
 PDAL
 R-git2r
@@ -38,7 +39,6 @@ freedv
 gcompris-qt
 gdal
 gmsh
-ipmctl
 js8call
 kdenlive
 kirigami
@@ -59,9 +59,9 @@ mariadb
 messagelib
 mkl-dnn
 mumble
-neovim
 openal-soft
 opencl-clang
+openvino
 poco
 pypi-setuptools_scm
 qt6webengine
