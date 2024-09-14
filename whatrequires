@@ -39,6 +39,7 @@ freedv
 gcompris-qt
 gdal
 gmsh
+google-benchmark
 js8call
 kdenlive
 kirigami
@@ -70,6 +71,8 @@ stellarium
 sundials
 supertuxkart
 synergy
+volk
+winegui
 wireshark
 x265
 xfce4-whiskermenu-plugin
