@@ -68,6 +68,7 @@ opencl-clang
 openvino
 poco
 pypi-setuptools_scm
+qt6base
 qt6webengine
 quassel
 stellarium
