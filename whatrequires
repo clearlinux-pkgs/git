@@ -5,7 +5,6 @@ FreeRDP
 FreeRDP2
 LPCNet
 MuseScore
-OpenColorIO
 PDAL
 R-git2r
 Remmina
@@ -34,6 +33,7 @@ embree
 extra-cmake-modules
 falcosecurity-libs
 filesystem
+fluidsynth
 fontforge
 freedv
 gcompris-qt
@@ -58,6 +58,7 @@ llvm15
 llvm16
 llvm17
 llvm18
+llvm19
 mariadb
 messagelib
 mkl-dnn
