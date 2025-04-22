@@ -7,7 +7,7 @@
 #
 Name     : git
 Version  : 2.49.0
-Release  : 245
+Release  : 246
 URL      : https://www.kernel.org/pub/software/scm/git/git-2.49.0.tar.gz
 Source0  : https://www.kernel.org/pub/software/scm/git/git-2.49.0.tar.gz
 Summary  : the fast distributed version control system
