@@ -8,6 +8,7 @@ MuseScore
 PDAL
 R-git2r
 Remmina
+SDL3
 SPIRV-Cross
 SVT-AV1
 VTK
@@ -52,6 +53,7 @@ libaom
 libcxx
 libdnf
 libgit2
+llama.cpp
 llvm
 llvm14
 llvm15
@@ -61,6 +63,7 @@ llvm18
 llvm19
 mariadb
 messagelib
+mimalloc
 mkl-dnn
 mumble
 nextcloud-desktop
