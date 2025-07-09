@@ -6,10 +6,10 @@
 # autospec commit: 65cf152
 #
 Name     : git
-Version  : 2.50.0
-Release  : 247
-URL      : https://www.kernel.org/pub/software/scm/git/git-2.50.0.tar.gz
-Source0  : https://www.kernel.org/pub/software/scm/git/git-2.50.0.tar.gz
+Version  : 2.50.1
+Release  : 248
+URL      : https://www.kernel.org/pub/software/scm/git/git-2.50.1.tar.gz
+Source0  : https://www.kernel.org/pub/software/scm/git/git-2.50.1.tar.gz
 Summary  : the fast distributed version control system
 Group    : Development/Tools
 License  : Apache-2.0 BSD-3-Clause BSL-1.0 GPL-2.0 MIT
@@ -108,10 +108,10 @@ man components for the git package.
 
 
 %prep
-%setup -q -n git-2.50.0
-cd %{_builddir}/git-2.50.0
+%setup -q -n git-2.50.1
+cd %{_builddir}/git-2.50.1
 pushd ..
-cp -a git-2.50.0 buildavx2
+cp -a git-2.50.1 buildavx2
 popd
 
 %build
@@ -119,7 +119,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1750169491
+export SOURCE_DATE_EPOCH=1752019317
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -177,7 +177,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1750169491
+export SOURCE_DATE_EPOCH=1752019317
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/git
 cp %{_builddir}/git-%{version}/COPYING %{buildroot}/usr/share/package-licenses/git/3ee0019d4f4ea0a9d3f50800833f30dc14e2968e || :
